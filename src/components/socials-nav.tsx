@@ -1,5 +1,5 @@
 import { faFileLines } from '@fortawesome/free-regular-svg-icons/faFileLines'
-import { faPaperPlane } from '@fortawesome/free-regular-svg-icons/faPaperPlane'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons/faEnvelope'
 import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub'
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn'
 
@@ -12,7 +12,7 @@ const SOCIAL_LINKS: IconLinksProps[] = [
     href: 'http://mike.cousins.io/resume/',
     icon: faFileLines,
   },
-  { title: 'Email', href: 'mailto:mike@cousins.io', icon: faPaperPlane },
+  { title: 'Email', href: 'mailto:mike@cousins.io', icon: faEnvelope },
   {
     title: 'LinkedIn',
     href: 'https://www.linkedin.com/in/mcous/',
