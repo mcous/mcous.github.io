@@ -2,8 +2,8 @@
   "private": true,
   "name": "mike-cousins-dot-io",
   "version": "2.0.0",
-  "author": "Mike Cousins <mike@cousins.io> (https://mike.cousins.io)",
-  "description": "Mike Cousins' home on the internet.",
+  "author": "Michael Cousins <mike@cousins.io> (https://mike.cousins.io)",
+  "description": "Michael Cousins' home on the internet.",
   "homepage": "https://mike.cousins.io",
   "repository": "github:mcous/mcous.github.io",
   "bugs": "https://github.com/mcous/mcous.github.io/issues",
@@ -18,20 +18,22 @@
     "lint": "eslint \"**/*.@(ts|tsx)\"",
     "format": "pnpm format:base --write",
     "format:check": "pnpm format:base --check",
-    "format:base": "prettier --write \"**/*.@(ts|tsx|svg|json|yaml|md)\""
+    "format:base": "prettier \"**/*.@(ts|tsx|svg|json|yaml|md)\""
   },
   "dependencies": {
     "@fontsource/open-sans": "^4.5.2",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-brands-svg-icons": "^6.1.2",
     "@fortawesome/free-regular-svg-icons": "^6.1.2",
-    "concurrently": "^7.3.0",
     "preact": "^10.6.4"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.1.6",
     "@prettier/plugin-xml": "^2.2.0",
     "@types/node": "^18.7.3",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "concurrently": "^7.3.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard-with-typescript": "^22.0.0",

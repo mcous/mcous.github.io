@@ -1,9 +1,9 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-
 import { faFileLines } from '@fortawesome/free-regular-svg-icons/faFileLines'
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons/faPaperPlane'
 import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub'
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn'
+
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
 const SOCIAL_LINKS: IconLinksProps[] = [
   { title: 'GitHub', href: 'https://github.com/mcous', icon: faGithub },
