@@ -1,6 +1,14 @@
-import { SocialsNav } from './socials-nav'
+import { SocialsNav } from '../components/socials-nav'
 
-export function App(): JSX.Element {
+export const title = 'Michael Cousins'
+
+export const description = `
+  Michael Cousins is a software engineer working
+  in JavaScript, Python, and [insert language here].
+  He's powered by caffeine and semantically versioned.
+`.trim()
+
+export function Page(): JSX.Element {
   return (
     <div class="pt-32 text-center">
       <div class="w-32 h-32 mx-auto border-current border-2 rounded-full">

@@ -1,30 +1,27 @@
 # mike.cousins.io
 
-> Mike Cousins' home on the internet
+Michael Cousins' home on the internet
 
 <https://mike.cousins.io>
 
 ## Develop
 
+Node.js v16 recommended for development.
+
 ```shell
 # start the dev server
-npm run dev
+pnpm dev
 
 # format, lint, and typecheck
-npm run format
-npm run lint
-npm run check
+pnpm format
+pnpm lint
+pnpm types
 
 # build and serve production assets
-npm run build
-npm run preview
+pnpm build
+pnpm preview
 ```
 
 ## Deploy
 
-Cut a new version and push to GitHub to tell the CI server to build and deploy HTML and CSS to GitHub pages:
-
-```shell
-npm version ${level} -m 'chore(release): %s'
-git push --follow-tags
-```
+The site is continuously deployed to GitHub Pages from `main`.
