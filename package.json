@@ -28,6 +28,7 @@
     "preact": "^10.6.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.10",
     "@preact/preset-vite": "^2.1.6",
     "@prettier/plugin-xml": "^2.2.0",
     "@types/node": "^18.7.3",
@@ -37,6 +38,9 @@
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard-with-typescript": "^22.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
     "preact-render-to-string": "^5.1.19",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4",
