@@ -1,11 +1,18 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { faFileAlt, faPaperPlane } from '@fortawesome/free-regular-svg-icons'
-import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+import { faFileLines } from '@fortawesome/free-regular-svg-icons/faFileLines'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons/faEnvelope'
+import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub'
+import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn'
+
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
 const SOCIAL_LINKS: IconLinksProps[] = [
   { title: 'GitHub', href: 'https://github.com/mcous', icon: faGithub },
-  { title: 'Résumé', href: 'http://mike.cousins.io/resume/', icon: faFileAlt },
-  { title: 'Email', href: 'mailto:mike@cousins.io', icon: faPaperPlane },
+  {
+    title: 'Résumé',
+    href: 'http://mike.cousins.io/resume/',
+    icon: faFileLines,
+  },
+  { title: 'Email', href: 'mailto:mike@cousins.io', icon: faEnvelope },
   {
     title: 'LinkedIn',
     href: 'https://www.linkedin.com/in/mcous/',

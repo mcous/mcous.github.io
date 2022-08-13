@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite'
 import preact from '@preact/preset-vite'
-import WindiCSS from 'vite-plugin-windicss'
+import ssr from 'vite-plugin-ssr/plugin'
+import windiCss from 'vite-plugin-windicss'
 
 export default defineConfig({
+  appType: 'custom',
   plugins: [
-    // TODO(mc, 2021-12-28): remove `exclude` workaround to
-    // https://github.com/preactjs/preset-vite/issues/37
-    preact({ exclude: /node_modules/ }),
-    WindiCSS(),
+    preact(),
+    windiCss(),
+    ssr({ prerender: true, includeAssetsImportedByServer: true }),
   ],
 })
