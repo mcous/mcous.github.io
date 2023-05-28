@@ -6,16 +6,17 @@ Michael Cousins' home on the internet
 
 ## Develop
 
-Node.js v16 recommended for development.
+Node.js v18 required for development.
 
 ```shell
-# start the dev server
-pnpm dev
+# run all checks and builds
+pnpm all
 
-# format, lint, and typecheck
-pnpm format
-pnpm lint
-pnpm types
+# start the dev server
+pnpm start
+
+# format, lint, and type check
+pnpm check
 
 # build and serve production assets
 pnpm build

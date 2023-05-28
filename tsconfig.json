@@ -1,15 +1,9 @@
 {
+  "extends": "@mcous/typescript-config/base.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "jsx": "preserve",
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "skipLibCheck": true,
+    "types": ["vite/client", "vitest"],
+    "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["src", "typings", "*.config.ts"]
+  "include": ["src", "typings", "etc", "*.config.ts", "*.config.cjs"]
 }

@@ -1,4 +1,4 @@
-import { SocialsNav } from '../components/socials-nav'
+import { SocialsNav } from '../components/socials-nav.tsx'
 
 export const title = 'Michael Cousins'
 
@@ -11,7 +11,7 @@ export const description = `
 export function Page(): JSX.Element {
   return (
     <div class="pt-32 text-center">
-      <div class="w-32 h-32 mx-auto border-current border-2 rounded-full">
+      <div class="w-32 h-32 mx-auto border border-current border-2 rounded-full">
         <h1 class="my-0 pt-8 text-2xl leading-tight font-normal">
           mike
           <br />

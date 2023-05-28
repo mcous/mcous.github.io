@@ -1,13 +1,16 @@
 import { render as renderToString } from 'preact-render-to-string'
-import { escapeInject as html, dangerouslySkipEscape } from 'vite-plugin-ssr'
+import {
+  escapeInject as html,
+  dangerouslySkipEscape,
+} from 'vite-plugin-ssr/server'
 
 import faviconIco from './favicon.ico'
 import faviconSvg from './favicon.svg'
 
 import type { ComponentType } from 'preact'
-import type { PageContextBuiltIn } from 'vite-plugin-ssr'
+import type { PageContextBuiltInClientWithClientRouting } from 'vite-plugin-ssr/types'
 
-interface PageContext extends PageContextBuiltIn {
+interface PageContext extends PageContextBuiltInClientWithClientRouting {
   Page: ComponentType
   exports: {
     title: string
@@ -30,7 +33,7 @@ export function render(pageContext: PageContext): unknown {
         <link rel="icon" href="${faviconIco}" sizes="any" />
         <link rel="icon" href="${faviconSvg}" type="image/svg+xml" />
       </head>
-      <body bg="gray-800">
+      <body class="font-sans">
         ${dangerouslySkipEscape(pageHtml)}
       </body>
     </html>
