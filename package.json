@@ -10,7 +10,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "all": "concurrently -g pnpm:check:* pnpm:build",
+    "all": "concurrently -g pnpm:check:* pnpm:coverage pnpm:build",
     "start": "vite dev",
     "build": "vite build",
     "preview": "vite build && vite preview",

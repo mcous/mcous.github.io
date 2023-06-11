@@ -2,19 +2,39 @@ import '@fontsource-variable/open-sans'
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 
-import { hydrate as preactHydrate, render as preactRender } from 'preact'
+import './favicon.ico'
+import './favicon.svg'
 
-import type { ComponentType } from 'preact'
-import type { PageContextBuiltInClientWithClientRouting } from 'vite-plugin-ssr/types'
+import { hydrate, Fragment } from 'preact'
+import { signal } from '@preact/signals'
 
-interface PageContext extends PageContextBuiltInClientWithClientRouting {
-  Page: ComponentType
-}
+import { App, type AppState } from '../components/app.tsx'
+import type { PageContextClient } from './page-context.ts'
 
-// eslint-disable-next-line @typescript-eslint/require-await
-export async function render(pageContext: PageContext): Promise<void> {
-  const { Page, isHydration } = pageContext
-  const mount = isHydration ? preactHydrate : preactRender
+export const clientRouting = true
 
-  mount(<Page />, window.document.body)
+const appState = signal<AppState>({
+  metadata: { title: '', description: '' },
+  Page: Fragment,
+})
+
+export function render(pageContext: PageContextClient): void {
+  const { Page, isHydration, exports: pageExports } = pageContext
+  const { headerProps, metadata, Layout } = pageExports
+
+  appState.value = {
+    metadata,
+    headerProps,
+    Layout,
+    Page,
+  }
+
+  window.document.title = metadata.title
+  window.document
+    .querySelector('meta[name="description"]')
+    ?.setAttribute('content', metadata.description)
+
+  if (isHydration) {
+    hydrate(<App state={appState} />, window.document.body)
+  }
 }

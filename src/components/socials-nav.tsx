@@ -11,7 +11,7 @@ const SOCIAL_LINKS: IconLinksProps[] = [
   },
   {
     title: 'Email',
-    href: 'mailto:mike@cousins.io',
+    href: 'mailto:michael@cousins.io',
     icon: 'i-fa6-regular-envelope',
   },
   {
@@ -32,7 +32,7 @@ function IconLink(props: IconLinksProps): JSX.Element {
 
   return (
     <a
-      class="mx-2 p-3 border border-current border-2 inline-flex items-center justify-center transition-opacity hover:opacity-50"
+      class="mx-2 p-3 border border-current border-2 inline-flex items-center justify-center transition-color hover:text-blue-700"
       title={title}
       href={href}
     >
@@ -42,12 +42,14 @@ function IconLink(props: IconLinksProps): JSX.Element {
 }
 
 export interface SocialsNavProps {
-  class: string
+  class?: string
 }
 
 export function SocialsNav(props: SocialsNavProps): JSX.Element {
+  const { class: extraClass = '' } = props
+
   return (
-    <nav class={props.class}>
+    <nav class={`text-2xl leading-none ${extraClass}`}>
       {SOCIAL_LINKS.map((linkProps, index) => (
         <IconLink key={index} {...linkProps} />
       ))}
