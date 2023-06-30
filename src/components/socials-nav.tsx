@@ -1,3 +1,5 @@
+import { HoverLink } from './atoms.tsx'
+
 const SOCIAL_LINKS: IconLinksProps[] = [
   {
     title: 'GitHub',
@@ -31,13 +33,13 @@ function IconLink(props: IconLinksProps): JSX.Element {
   const { title, href, icon } = props
 
   return (
-    <a
-      class="mx-2 p-3 border border-current border-2 inline-flex items-center justify-center transition-color hover:text-blue-700"
+    <HoverLink
+      class="mx-2 p-3 border border-current border-2 inline-flex items-center justify-center"
       title={title}
       href={href}
     >
       <div aria-hidden role="img" class={icon} />
-    </a>
+    </HoverLink>
   )
 }
 

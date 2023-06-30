@@ -12,11 +12,7 @@ export function Header(props: HeaderProps): JSX.Element {
   const isHero = mode === HEADER_HERO
 
   return (
-    <header
-      class={`flex flex-col items-center text-center mx-auto ${
-        isHero ? 'mt-32' : 'mt-8'
-      }`}
-    >
+    <header class="flex flex-col items-center text-center mx-auto mt-16">
       <a href="/" class="w-32 h-32 border border-current border-2 rounded-full">
         <h1 class="pt-8.5 text-2xl leading-tight">
           michael
