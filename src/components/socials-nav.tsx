@@ -1,51 +1,42 @@
-import { faFileLines } from '@fortawesome/free-regular-svg-icons/faFileLines'
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons/faEnvelope'
-import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub'
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn'
-
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-
 const SOCIAL_LINKS: IconLinksProps[] = [
-  { title: 'GitHub', href: 'https://github.com/mcous', icon: faGithub },
+  {
+    title: 'GitHub',
+    href: 'https://github.com/mcous',
+    icon: 'i-fa6-brands-github',
+  },
   {
     title: 'Résumé',
     href: 'http://mike.cousins.io/resume/',
-    icon: faFileLines,
+    icon: 'i-fa6-regular-file-lines',
   },
-  { title: 'Email', href: 'mailto:mike@cousins.io', icon: faEnvelope },
+  {
+    title: 'Email',
+    href: 'mailto:mike@cousins.io',
+    icon: 'i-fa6-regular-envelope',
+  },
   {
     title: 'LinkedIn',
     href: 'https://www.linkedin.com/in/mcous/',
-    icon: faLinkedinIn,
+    icon: 'i-fa6-brands-linkedin-in',
   },
 ]
 
 interface IconLinksProps {
   title: string
   href: string
-  icon: IconDefinition
+  icon: string
 }
 
 function IconLink(props: IconLinksProps): JSX.Element {
   const { title, href, icon } = props
-  const [width, height, , , pathData] = icon.icon
 
   return (
     <a
-      class="mx-2 p-3 border-current border-2 inline-flex items-center justify-center transition-opacity hover:opacity-50"
+      class="mx-2 p-3 border border-current border-2 inline-flex items-center justify-center transition-opacity hover:opacity-50"
       title={title}
       href={href}
     >
-      <svg
-        aria-hidden
-        focusable="false"
-        role="img"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox={`0 0 ${width} ${height}`}
-        class="fill-current w-1em h-1em"
-      >
-        <path d={typeof pathData === 'string' ? pathData : pathData.join('')} />
-      </svg>
+      <div aria-hidden role="img" class={icon} />
     </a>
   )
 }
