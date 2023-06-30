@@ -1,0 +1,245 @@
+export const metadata = {
+  title: 'Better mocks in Vitest',
+  description: 'Introducing vitest-when: better mocking in Vitest',
+  posted: '2023-06-30',
+}
+
+Mocking is a fantastic tool for writing high-quality unit tests, but **nothing
+creates useless testing pain quite like poorly used mocks**. One type of
+mocking[^1] - creating and configuring stubs - is particularly useful, but hard
+to do well with [Vitest's][vitest] built-in [mock functions][].
+
+[^1]:
+    In case you have strong opinions about jargon: I use the word "mock" in this
+    article to mean "[test double][]." It's less typing!
+
+Inspired by a couple of my favorite testing libraries - [testdouble.js][] and
+[jest-when][] - I set out to write an easy-to-use stubbing library specifically
+for Vitest to provide focused design feedback throughout my tests.
+
+Introducing: :tada: [vitest-when][] :tada:, a library that wraps Vitest mock
+functions so you can spend more time building and less time futzing around with
+mocks.
+
+```shell
+npm install --save-dev vitest-when
+```
+
+## What is a stub?
+
+A "stub" is a fake function in a test that you configure with "canned"
+responses. When a stub is called with the right arguments, it returns its
+preconfigured response. If it's called the wrong way, it simply no-ops.
+
+You can use vitest-when to configure a `vi.fn()` mock function as a stub:
+
+```ts
+import { vi, expect, test } from 'vitest'
+import { when } from 'vitest-when'
+
+test('stub something', () => {
+  const sayHello = vi.fn()
+
+  when(sayHello).calledWith('Alice').thenReturn('Hello, Alice')
+  when(sayHello).calledWith('Bob').thenReturn('Hey, Bob')
+
+  expect(sayHello('Alice')).toBe('Hello, Alice')
+  expect(sayHello('Bob')).toBe('Hey, Bob')
+  expect(sayHello('Carlos')).toBe(undefined)
+})
+```
+
+In the above example, the `sayHello` stub behaves accordingly:
+
+- When `sayHello` is called with `Alice`, it will return `Hello, Alice`
+- When `sayHello` is called with `Box`, it will return `Hey, Bob`
+- When `sayHello` is called in any other way, it will return `undefined`
+
+Stubs are useful when you're mocking a function that returns data. You set up a
+stub that says "I'll return the correct data, but only if I get called with the
+right arguments", inject it into your code-under-test, and see if your code
+produces the correct output.
+
+Functions that act upon input data to produce output data - i.e. functions that
+return something - are easier to reason with, assemble, and observe than
+functions that return nothing and solely produce side-effects. Because stubs
+make it easier to test your code's interaction with output-producing APIs, using
+stubs exerts design pressure to prefer writing functions that return something.
+In general, this leads to code with fewer hard-to-reason-with side-effects.
+
+## What can vitest-when do?
+
+You can use vitest-when to configure a stub with several behaviors.
+
+```ts
+// Return a value
+when(sayHello).calledWith('Bob').thenReturn('Hello, Bob')
+
+// Resolve a Promise
+when(sayHello).calledWith('Bob').thenResolve('Hello, Bob')
+
+// Throw an error
+when(sayHello).calledWith('Bob').thenThrow(new Error('Bye'))
+
+// Reject a Promise
+when(sayHello).calledWith('Bob').thenReject(new Error('Bye'))
+
+// Run an arbitrary function
+when(sayHello)
+  .calledWith('Bob')
+  .thenDo((name) => `Hello, ${name}`)
+```
+
+The same stub can have multiple different behaviors configured, depending on the
+arguments it's called with.
+
+```ts
+when(sayHello).calledWith('Alice').thenReturn('Hello, Alice')
+when(sayHello).calledWith('Bob').thenReturn('Hello, Bob')
+when(sayHello).calledWith('Chad').thenThrow(new Error('Nah'))
+```
+
+The `calledWith` method accepts Vitest's [asymmetric matchers][], so you can
+focus on specifying what's important without losing out on test completeness.
+
+```ts
+when(sayHello).calledWith(expect.any(String)).thenReturn('Hello!')
+```
+
+Finally, because vitest-when is a thin wrapper around vanilla Vitest mock
+functions, it's fully compatible with `vi.mock` module automocking.
+
+```ts
+import { vi, describe, afterEach, it, expect } from 'vitest'
+import { when } from 'vitest-when'
+
+import { getAnswer } from './deep-thought.ts'
+import { getQuestion } from './earth.ts'
+import * as subject from './meaning-of-life.ts'
+
+vi.mock('./deep-thought.ts')
+vi.mock('./earth.ts')
+
+describe('get the meaning of life', () => {
+  it('should get the answer and the question', async () => {
+    when(getAnswer).calledWith().thenResolve(42)
+    when(getQuestion).calledWith(42).thenResolve("What's 6 by 9?")
+
+    const result = await subject.createMeaning()
+
+    expect(result).toEqual({
+      question: "What's 6 by 9?",
+      answer: 42,
+    })
+  })
+})
+```
+
+## Why use vitest-when?
+
+Vitest's built-in mock functions, returned by `vi.fn()`, are powerful and
+flexible. However in my experience with Vitest (and Jest before it), their API
+is easy to misuse, leaving you and your team with tests that are hard to read
+and misbehave often.
+
+Take these two trivial "tests", one with vitest-when and the other without:
+
+```ts
+import { vi, expect, test } from 'vitest'
+import { when } from 'vitest-when'
+
+const sayHello = vi.fn()
+
+test('with vitest-when', () => {
+  when(sayHello).calledWith('Alice').thenReturn('Hello, Alice')
+
+  const result = sayHello('Alice')
+
+  expect(result).toBe('Hello, Alice')
+})
+
+test('without vitest-when', () => {
+  sayHello.mockReturnValue('Hello, Alice')
+
+  const result = sayHello('Alice')
+
+  expect(result).toBe('Hello, Alice')
+  expect(sayHello).toHaveBeenCalledWith('Alice')
+})
+```
+
+With vitest-when, **all configured behaviors are conditional**. You must define
+a complete set of arguments that will trigger the behavior, as a cause and
+effect:
+
+```ts
+when(sayHello)
+  .calledWith('Alice') // cause
+  .thenReturn('Hello, Alice') // effect
+```
+
+In vanilla Vitest, however, you use methods like `mockReturnValue`. These
+methods are unconditional; the configured behavior will trigger no matter how
+the mock is called, even it's called incorrectly.
+
+```ts
+sayHello.mockReturnValue('Hello, Alice')
+
+expect(sayHello('Alice')).toBe('Hello, Alice')
+expect(sayHello('Bob')).toBe('Hello, Alice')
+expect(sayHello('Carlos')).toBe('Hello, Alice')
+```
+
+This increases the likelihood that you'll write a test that passes when it
+shouldn't, because the code under test might call the stub incorrectly and still
+receive the configured return value.
+
+In order to avoid writing a test that incorrectly passes, you have to add
+assertion(s) near the bottom of your test that the mock was called correctly:
+
+```ts
+sayHello.mockReturnValue('Hello, Alice') // effect
+
+const result = sayHello('Alice')
+
+expect(result).toBe('Hello, Alice')
+expect(sayHello).toHaveBeenCalledWith('Alice') // assert cause
+```
+
+The argument assertion lives after, and away from, the return value, making the
+test harder to read and maintain compared to vitest-when's strategy of
+configuring a cause and effect.
+
+You also perform an _assertion_ to check the arguments, which is a more forceful
+check that vitest-when's "filter by arguments and no-op otherwise" strategy.
+Mocking, by necessity, introduces coupling between your tests and the
+implementation of your code under test. Higher coupling forces can lead to more
+frequent false test failures. Filtering by arguments is sufficient to ensure
+correctness, and is a looser form of coupling than an assertion.
+
+The final benefit that vitest-when brings to the table is **strict typing when
+using TypeScript**. The arguments to both `calledWith` and `thenReturn` (and
+other behaviors) are checked against the mock function's arguments and return
+type, which helps you update tests during refactors _before_ you start getting
+annoyed. As of vitest 0.32.0, `mockReturnValue` (and friends) are typechecked
+but `expect().toHaveBeenCalledWith` is not.
+
+## Try it yourself
+
+If you enjoy using Vitest and you use mock functions in your test suites, you
+should give [vitest-when][] a try! Incorporating this style of stubbing has
+dramatically improved the quality of my code and tests, and I think it could do
+the same for you.
+
+```shell
+npm install --save-dev vitest-when
+```
+
+[vitest]: https://vitest.dev
+[mock functions]: https://vitest.dev/api/mock.html
+[asymmetric matchers]: https://vitest.dev/api/expect.html#expect-anything
+[jest mock functions]: https://jestjs.io/docs/mock-function-api
+[testdouble.js]: https://github.com/testdouble/testdouble.js
+[jest-when]: https://github.com/timkindberg/jest-when
+[vitest-when]: https://github.com/mcous/vitest-when
+[test double]: https://en.wikipedia.org/wiki/Test_double
