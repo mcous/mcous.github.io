@@ -2,6 +2,7 @@ export const metadata = {
   title: 'Better mocks in Vitest',
   description: 'Introducing vitest-when: better mocking in Vitest',
   posted: '2023-06-30',
+  updated: '2023-08-04',
 }
 
 Mocking is a fantastic tool for writing high-quality unit tests, but **nothing
@@ -52,7 +53,7 @@ test('stub something', () => {
 In the above example, the `sayHello` stub behaves accordingly:
 
 - When `sayHello` is called with `Alice`, it will return `Hello, Alice`
-- When `sayHello` is called with `Box`, it will return `Hey, Bob`
+- When `sayHello` is called with `Bob`, it will return `Hey, Bob`
 - When `sayHello` is called in any other way, it will return `undefined`
 
 Stubs are useful when you're mocking a function that returns data. You set up a
@@ -208,7 +209,7 @@ expect(sayHello).toHaveBeenCalledWith('Alice') // assert cause
 
 The argument assertion lives after, and away from, the return value, making the
 test harder to read and maintain compared to vitest-when's strategy of
-configuring a cause and effect.
+configuring a cause and effect at the same time.
 
 You also perform an _assertion_ to check the arguments, which is a more forceful
 check that vitest-when's "filter by arguments and no-op otherwise" strategy.
