@@ -2,7 +2,7 @@
 
 Michael Cousins' home on the internet
 
-<https://mike.cousins.io>
+<https://michael.cousins.io>
 
 ## Develop
 

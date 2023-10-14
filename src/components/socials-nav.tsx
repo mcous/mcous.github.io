@@ -34,7 +34,7 @@ function IconLink(props: IconLinksProps): JSX.Element {
 
   return (
     <HoverLink
-      class="mx-2 p-3 border border-current border-2 inline-flex items-center justify-center"
+      class="mx-2 inline-flex items-center justify-center border border-2 border-current p-3"
       title={title}
       href={href}
     >

@@ -1,39 +1,28 @@
-import type { ComponentType } from 'preact'
+import '@fontsource-variable/open-sans'
+import '@unocss/reset/tailwind.css'
+import 'virtual:uno.css'
 
-import type {
-  LayoutProps,
-  PageProps,
-  Metadata,
-} from '../renderer/page-context.ts'
-
-import { Header, type HeaderProps } from './header.tsx'
-import { Layout as DefaultLayout } from './layout.tsx'
-
-export interface AppState {
-  headerProps?: HeaderProps | undefined
-  metadata: Metadata
-  Layout?: ComponentType<LayoutProps> | undefined
-  Page: ComponentType<PageProps>
-}
+import type { AppStateSignal } from '$lib/app-state.ts'
+import { HeadMeta } from './head-meta.tsx'
+import { Header } from './header.tsx'
+import { RootLayout } from './root-layout.tsx'
 
 export interface AppProps {
-  state: { value: AppState }
+  state: AppStateSignal
 }
 
 export function App(props: AppProps) {
-  const {
-    headerProps = {},
-    metadata,
-    Layout = DefaultLayout,
-    Page,
-  } = props.state.value
+  const { Layout, Page, metadata, urlPathname } = props.state.value
 
   return (
     <>
-      <Header {...headerProps} />
-      <Layout metadata={metadata}>
-        <Page />
-      </Layout>
+      <HeadMeta metadata={metadata} />
+      <Header urlPathname={urlPathname} />
+      <RootLayout>
+        <Layout metadata={metadata}>
+          <Page />
+        </Layout>
+      </RootLayout>
     </>
   )
 }

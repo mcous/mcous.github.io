@@ -1,6 +1,8 @@
-import type { FunctionComponent, RenderableProps } from 'preact'
+import type { FunctionComponent } from 'preact'
 
-type Atom<E extends HTMLElement> = FunctionComponent<JSX.HTMLAttributes<E>>
+type Atom<E extends keyof JSX.IntrinsicElements> = FunctionComponent<
+  JSX.IntrinsicElements[E]
+>
 
 interface ParsedProps<P> {
   id: string
@@ -9,9 +11,9 @@ interface ParsedProps<P> {
 }
 
 export const parseProps = <
-  P extends RenderableProps<JSX.HTMLAttributes<never>>
+  P extends JSX.IntrinsicElements[keyof JSX.IntrinsicElements],
 >(
-  props: P
+  props: P,
 ): ParsedProps<P> => {
   const { class: classInput, ...passProps } = props
   const id = typeof props.id === 'string' ? props.id : props.id?.value ?? ''
@@ -21,7 +23,7 @@ export const parseProps = <
   return { id, className, passProps }
 }
 
-export const Link: Atom<HTMLAnchorElement> = (props) => {
+export const Link: Atom<'a'> = (props) => {
   const { className, passProps } = parseProps(props)
 
   return (
@@ -32,7 +34,7 @@ export const Link: Atom<HTMLAnchorElement> = (props) => {
   )
 }
 
-export const HoverLink: Atom<HTMLAnchorElement> = (props) => {
+export const HoverLink: Atom<'a'> = (props) => {
   const { className, passProps } = parseProps(props)
 
   return (
@@ -43,7 +45,7 @@ export const HoverLink: Atom<HTMLAnchorElement> = (props) => {
   )
 }
 
-export const Copy: Atom<HTMLParagraphElement> = (props) => {
+export const Copy: Atom<'p'> = (props) => {
   const { className, passProps } = parseProps(props)
 
   return (
@@ -51,13 +53,13 @@ export const Copy: Atom<HTMLParagraphElement> = (props) => {
   )
 }
 
-export const Heading1: Atom<HTMLHeadingElement> = (props) => {
+export const Heading1: Atom<'h1'> = (props) => {
   const { className, passProps } = parseProps(props)
 
   return <h1 class={`mt-8 text-2xl text-center ${className}`} {...passProps} />
 }
 
-export const Heading2: Atom<HTMLHeadingElement> = (props) => {
+export const Heading2: Atom<'h2'> = (props) => {
   const { id, className, passProps } = parseProps(props)
 
   return (
@@ -65,7 +67,7 @@ export const Heading2: Atom<HTMLHeadingElement> = (props) => {
       {id ? (
         <a
           href={`#${id}`}
-          class="hover:before:content-['#'] before:absolute before:ml--4 before:opacity-50"
+          class="before:absolute before:ml--4 before:opacity-50 hover:before:content-['#']"
         >
           {passProps.children}
         </a>
@@ -76,32 +78,32 @@ export const Heading2: Atom<HTMLHeadingElement> = (props) => {
   )
 }
 
-export const Heading3: Atom<HTMLHeadingElement> = (props) => {
+export const Heading3: Atom<'h3'> = (props) => {
   const { className, passProps } = parseProps(props)
 
   return <h2 class={`mt-4 text-lg ${className}`} {...passProps} />
 }
 
-export const OrderedList: Atom<HTMLOListElement> = (props) => {
+export const OrderedList: Atom<'ol'> = (props) => {
   const { className, passProps } = parseProps(props)
 
   return (
     <ol class={`mt-4 list-decimal mt-4 pl-8 ${className}`} {...passProps} />
   )
 }
-export const UnorderedList: Atom<HTMLUListElement> = (props) => {
+export const UnorderedList: Atom<'ul'> = (props) => {
   const { className, passProps } = parseProps(props)
 
   return <ul class={`mt-4 list-disc mt-4 pl-8 ${className}`} {...passProps} />
 }
 
-export const ListItem: Atom<HTMLLIElement> = (props) => {
+export const ListItem: Atom<'li'> = (props) => {
   const { className, passProps } = parseProps(props)
 
   return <li class={`text-base leading-relaxed ${className}`} {...passProps} />
 }
 
-export const PreformattedText: Atom<HTMLPreElement> = (props) => {
+export const PreformattedText: Atom<'pre'> = (props) => {
   const { className, passProps } = parseProps(props)
 
   return (
@@ -112,14 +114,14 @@ export const PreformattedText: Atom<HTMLPreElement> = (props) => {
   )
 }
 
-export const Code: Atom<HTMLElement> = (props) => {
+export const Code: Atom<'code'> = (props) => {
   const { className, passProps } = parseProps(props)
   const isBlock = className.includes('hljs')
 
   return (
     <code
       class={`font-mono ${
-        isBlock ? 'rounded-lg !pa-4' : 'rounded px-1 py-0.5 bg-slate-200'
+        isBlock ? 'sm:rounded-lg !pa-4' : 'rounded px-1 py-0.5 bg-slate-200'
       } ${className}`}
       {...passProps}
     />

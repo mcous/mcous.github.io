@@ -1,7 +1,10 @@
+import '@fontsource-variable/source-code-pro'
+import 'highlight.js/styles/github-dark-dimmed.css'
+
 import type { ComponentProps } from 'preact'
 import { MDXProvider } from '@mdx-js/preact'
 
-import type { LayoutProps } from '../renderer/page-context.ts'
+import type { LayoutProps } from '$renderer/types.ts'
 import * as atoms from './atoms.tsx'
 
 type MDXComponents = ComponentProps<typeof MDXProvider>['components']
@@ -19,21 +22,21 @@ const components: MDXComponents = {
   li: atoms.ListItem,
 }
 
-export function MDXLayout(props: LayoutProps): JSX.Element {
+export function ArticleLayout(props: LayoutProps): JSX.Element {
   const { metadata, children } = props
   const { title, posted = 'Draft', updated } = metadata
 
   return (
-    <main class="flex flex-col items-stretch max-w-148 mx-auto px-4">
+    <>
       <h1 class="mt-4 text-center text-xl">{title}</h1>
-      <small class="mt-1 text-center text-sm leading-relaxed font-light">
+      <small class="mt-1 text-center text-sm font-light leading-relaxed">
         <p>Posted: {posted}</p>
         {updated ? <p>Updated: {updated}</p> : false}
       </small>
       <MDXProvider components={components}>{children}</MDXProvider>
-      <atoms.Link href="/" class="self-center my-8">
+      <atoms.Link href="/" class="my-8 self-center">
         Back
       </atoms.Link>
-    </main>
+    </>
   )
 }

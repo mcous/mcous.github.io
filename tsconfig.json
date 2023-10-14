@@ -1,9 +1,18 @@
 {
   "extends": "@mcous/typescript-config/base.json",
   "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "types": ["vite/client", "vitest"],
     "allowImportingTsExtensions": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "$articles/*": ["./src/articles/*"],
+      "$components/*": ["./src/components/*"],
+      "$lib/*": ["./src/lib/*"],
+      "$pages/*": ["./src/pages/*"],
+      "$renderer/*": ["./src/renderer/*"]
+    }
   },
-  "include": ["src", "typings", "etc", "*.config.ts", "*.config.cjs"]
+  "include": ["src", "etc", "*.config.ts", "*.config.js"]
 }
