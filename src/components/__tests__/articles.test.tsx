@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen, within } from '@testing-library/preact'
 
-import * as subject from '../articles.tsx'
+import type { ArticleEntry } from '$lib/article-entries.ts'
+import * as subject from '$components/articles.tsx'
 
 describe('articles component', () => {
   it('should have title', () => {
@@ -13,7 +14,7 @@ describe('articles component', () => {
   })
 
   it('should display links to articles', () => {
-    const entries: subject.ArticleEntry[] = [
+    const entries: ArticleEntry[] = [
       {
         title: 'How to fizz buzz',
         description: 'Fizz buzz for fun and profit',

@@ -1,26 +1,27 @@
 import { SocialsNav } from './socials-nav.tsx'
 
-export const HEADER_HERO = 'hero'
-export const HEADER_MINIMAL = 'minimal'
-
 export interface HeaderProps {
-  mode?: typeof HEADER_HERO | typeof HEADER_MINIMAL
+  urlPathname: string
 }
 
-export function Header(props: HeaderProps): JSX.Element {
-  const { mode = HEADER_HERO } = props
-  const isHero = mode === HEADER_HERO
+export function Header(props: HeaderProps) {
+  const { urlPathname } = props
+  const isHome = urlPathname === '/'
 
   return (
-    <header class="flex flex-col items-center text-center mx-auto mt-16">
-      <a href="/" class="w-32 h-32 border border-current border-2 rounded-full">
-        <h1 class="pt-8.5 text-2xl leading-tight">
+    <header class="mx-auto mt-16 flex flex-col items-center text-center">
+      <h1 class="h-32 w-32 border border-2 border-current rounded-full">
+        <a
+          href="/"
+          class="block pt-8.5 text-2xl leading-tight"
+          aria-current={isHome ? 'page' : false}
+        >
           michael
           <br />
           cousins
-        </h1>
-      </a>
-      {isHero && (
+        </a>
+      </h1>
+      {isHome && (
         <div class="mt-4">
           <p class="text-xl">/[a-z]+ware engineer/</p>
           <p class="font-light">* warranty void if coffee is removed</p>

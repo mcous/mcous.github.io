@@ -1,11 +1,15 @@
 {
   "cSpell.words": [
     "fontsource",
+    "hljs",
     "iconify",
     "mcous",
     "preact",
+    "rehype",
     "résumé",
     "sonarjs",
-    "unocss"
-  ]
+    "unocss",
+    "vike"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
