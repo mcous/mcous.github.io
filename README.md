@@ -1,4 +1,4 @@
-# mike.cousins.io
+# michael.cousins.io
 
 Michael Cousins' home on the internet
 

@@ -1,18 +1,16 @@
 import { render as renderToString } from 'preact-render-to-string'
 import { escapeInject as html, dangerouslySkipEscape } from 'vike/server'
 import type { PageContextServer } from 'vike/types'
-
 import faviconIco from './favicon.ico'
 import faviconSvg from './favicon.svg'
 
 import { App } from '$components/app.tsx'
 import { createAppStateSignal, getAppState } from '$lib/app-state.ts'
 
-export async function onRenderHtml(
-  pageContext: PageContextServer,
-): Promise<unknown> {
+export async function onRenderHtml(pageContext: PageContextServer) {
   const appState = await getAppState(pageContext)
-  const documentHtml = html`
+
+  return html`
     <!doctype html>
     <html lang="en">
       <head>
@@ -30,6 +28,4 @@ export async function onRenderHtml(
       </body>
     </html>
   `
-
-  return { documentHtml }
 }
