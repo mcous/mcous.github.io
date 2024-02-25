@@ -10,7 +10,7 @@ export const Main: FunctionComponent<MainProps> = ({
   urlPathname,
   children,
 }) => (
-  <body class="font-sans -mr-[calc(100vw-100%)]">
+  <body class="font-sans -mr-[calc(100vw-100%)] overflow-x-hidden">
     <Header urlPathname={urlPathname} />
     <main class="mx-auto max-w-xl flex flex-col items-center px-4">
       {children}
