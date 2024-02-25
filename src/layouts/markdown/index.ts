@@ -1,0 +1,11 @@
+import '@fontsource-variable/source-code-pro'
+
+export { default as a } from './anchor.astro'
+export { default as code } from './code.astro'
+export { default as h2 } from './heading2.astro'
+export { default as h3 } from './heading3.astro'
+export { default as li } from './list-item.astro'
+export { default as ol } from './ordered-list.astro'
+export { default as p } from './paragraph.astro'
+export { default as pre } from './preformatted-text.astro'
+export { default as ul } from './unordered-list.astro'

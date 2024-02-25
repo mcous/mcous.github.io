@@ -1,41 +1,20 @@
-import type { Metadata } from '$renderer/types.ts'
-import { pathnameToSlug } from './article-slugs.ts'
+import { type CollectionEntry, getCollection } from 'astro:content'
 
-export interface ArticleEntry extends Metadata {
-  href: string
-}
+export type ArticleEntry = CollectionEntry<'articles'>
 
-const metadataByPath = import.meta.glob<Metadata>('../articles/*.mdx', {
-  import: 'metadata',
-  eager: true,
-})
+export async function getArticles(): Promise<ArticleEntry[]> {
+  const articles = await getCollection('articles')
 
-export const articleEntries = Object.entries(metadataByPath)
-  .map(metadataWithHref)
-  .filter(okToPost)
-  .sort(orderByPosted)
-
-export function getArticleUrls(): string[] {
-  return articleEntries.map(({ href }) => href)
-}
-
-function metadataWithHref(
-  moduleEntry: [pathname: string, metadata: Metadata],
-): ArticleEntry {
-  const [pathname, metadata] = moduleEntry
-  const slug = pathnameToSlug(pathname)
-  const href = `/articles/${slug}/`
-
-  return { ...metadata, href }
+  return articles.filter(okToPost).sort(orderByPosted)
 }
 
 function okToPost(entry: ArticleEntry): boolean {
-  return entry.posted !== undefined || import.meta.env.DEV
+  return entry.data.posted !== undefined || import.meta.env.DEV
 }
 
 function orderByPosted(a: ArticleEntry, b: ArticleEntry): number {
-  const { posted: aPosted = '' } = a
-  const { posted: bPosted = '' } = b
+  const { posted: aPosted = 0 } = a.data
+  const { posted: bPosted = 0 } = b.data
 
   if (aPosted > bPosted) return -1
   if (bPosted > aPosted) return 1

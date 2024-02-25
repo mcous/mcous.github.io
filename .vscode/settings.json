@@ -1,15 +1,17 @@
 {
   "cSpell.words": [
+    "astro",
+    "astrojs",
     "fontsource",
-    "hljs",
     "iconify",
     "mcous",
     "preact",
     "rehype",
     "résumé",
     "sonarjs",
-    "unocss",
-    "vike"
+    "tailwindcss",
+    "unocss"
   ],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.validate": ["astro"]
 }

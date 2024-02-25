@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'h2'>
+---
+
+<h2 class="mt-8 text-center text-xl" {...Astro.props}>
+  {
+    Astro.props.id ? (
+      <a
+        href={`#${Astro.props.id}`}
+        class="before:absolute before:opacity-50 before:-ml-4 hover:before:content-['#']"
+      >
+        <slot />
+      </a>
+    ) : (
+      <slot />
+    )
+  }
+</h2>

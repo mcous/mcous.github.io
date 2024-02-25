@@ -1,18 +1,16 @@
 {
-  "extends": "@mcous/typescript-config/base.json",
+  "extends": ["astro/tsconfigs/strict", "@mcous/typescript-config/base.json"],
   "compilerOptions": {
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "types": ["vite/client", "vitest"],
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "plugins": [{ "name": "@astrojs/ts-plugin" }],
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "baseUrl": ".",
     "paths": {
-      "$articles/*": ["./src/articles/*"],
-      "$components/*": ["./src/components/*"],
-      "$lib/*": ["./src/lib/*"],
-      "$pages/*": ["./src/pages/*"],
-      "$renderer/*": ["./src/renderer/*"]
+      "$components/*": ["src/components/*"],
+      "$images/*": ["src/images/*"],
+      "$layouts/*": ["src/layouts/*"],
+      "$lib/*": ["src/lib/*"]
     }
   },
-  "include": ["src", "etc", "*.config.ts", "*.config.js"]
+  "exclude": ["dist", "coverage"]
 }
