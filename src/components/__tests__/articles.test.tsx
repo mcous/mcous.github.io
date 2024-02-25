@@ -1,12 +1,12 @@
-import { describe, it, expect } from 'vitest'
 import { render, screen, within } from '@testing-library/preact'
+import { describe, expect, it } from 'vitest'
 
-import type { ArticleEntry } from '$lib/article-entries.ts'
 import * as subject from '$components/articles.tsx'
+import type { ArticleEntry } from '$lib/article-entries.ts'
 
 describe('articles component', () => {
   it('should have title', () => {
-    render(<subject.Articles entries={[]} />)
+    render(<subject.ArticleList entries={[]} />)
 
     const result = screen.getByRole('heading', { level: 2 })
 
@@ -14,22 +14,28 @@ describe('articles component', () => {
   })
 
   it('should display links to articles', () => {
-    const entries: ArticleEntry[] = [
+    const entries = [
       {
-        title: 'How to fizz buzz',
-        description: 'Fizz buzz for fun and profit',
-        href: '/articles/fizz-buzz/',
-        posted: '2021-01-01',
+        id: 'fizz-buzz.md' as ArticleEntry['id'],
+        slug: 'fizz-buzz' as ArticleEntry['slug'],
+        data: {
+          title: 'How to fizz buzz',
+          description: 'Fizz buzz for fun and profit',
+          posted: new Date('2021-01-01'),
+        },
       },
       {
-        title: 'How to foo bar',
-        description: 'Foo bar for fun and profit',
-        href: '/articles/foo-bar/',
-        posted: '2022-02-02',
+        id: 'foo-bar.md' as ArticleEntry['id'],
+        slug: 'foo-bar' as ArticleEntry['slug'],
+        data: {
+          title: 'How to foo bar',
+          description: 'Foo bar for fun and profit',
+          posted: new Date('2022-02-02'),
+        },
       },
-    ]
+    ] as ArticleEntry[]
 
-    render(<subject.Articles entries={entries} />)
+    render(<subject.ArticleList entries={entries} />)
 
     const nav = screen.getByRole('navigation')
     const list = within(nav).getByRole('list')

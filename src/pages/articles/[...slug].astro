@@ -1,0 +1,27 @@
+---
+import { Article } from '$components/article-layout.tsx'
+import Layout from '$layouts/layout.astro'
+import * as components from '$layouts/markdown'
+import { type ArticleEntry, getArticles } from '$lib/article-entries.ts'
+
+export async function getStaticPaths() {
+  const articles = await getArticles()
+
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: article,
+  }))
+}
+
+type Props = ArticleEntry
+
+const article = Astro.props
+const { title, description } = article.data
+const { Content } = await article.render()
+---
+
+<Layout title={title} description={description}>
+  <Article data={article.data}>
+    <Content components={components} />
+  </Article>
+</Layout>

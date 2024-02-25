@@ -1,5 +1,3 @@
-import { HoverLink } from './atoms.tsx'
-
 const SOCIAL_LINKS: IconLinksProps[] = [
   {
     title: 'GitHub',
@@ -29,17 +27,17 @@ interface IconLinksProps {
   icon: string
 }
 
-function IconLink(props: IconLinksProps): JSX.Element {
+function IconLink(props: IconLinksProps) {
   const { title, href, icon } = props
-
   return (
-    <HoverLink
-      class="mx-2 inline-flex items-center justify-center border border-2 border-current p-3"
+    <a
+      class="mx-2 inline-flex items-center justify-center border-2 border-current p-3 transition-color hover:text-blue-700"
       title={title}
+      aria-label={title}
       href={href}
     >
-      <div aria-hidden role="img" class={icon} />
-    </HoverLink>
+      <div aria-hidden="true" role="img" class={icon} />
+    </a>
   )
 }
 
@@ -47,11 +45,10 @@ export interface SocialsNavProps {
   class?: string
 }
 
-export function SocialsNav(props: SocialsNavProps): JSX.Element {
-  const { class: extraClass = '' } = props
-
+export function SocialsNav(props: SocialsNavProps) {
+  const { class: className = '' } = props
   return (
-    <nav class={`text-2xl leading-none ${extraClass}`}>
+    <nav class={`text-2xl leading-none ${className}`}>
       {SOCIAL_LINKS.map((linkProps, index) => (
         <IconLink key={index} {...linkProps} />
       ))}

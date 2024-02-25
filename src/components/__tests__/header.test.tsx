@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
-import { render, within, screen } from '@testing-library/preact'
+import { render, screen, within } from '@testing-library/preact'
+import { describe, expect, it } from 'vitest'
 
 import * as subject from '$components/header.tsx'
 

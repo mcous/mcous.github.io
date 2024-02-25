@@ -1,0 +1,11 @@
+---
+import { ArticleList } from '$components/articles.tsx'
+import Layout from '$layouts/layout.astro'
+import { getArticles } from '$lib/article-entries.ts'
+
+const articleEntries = await getArticles()
+---
+
+<Layout>
+  <ArticleList entries={articleEntries} />
+</Layout>

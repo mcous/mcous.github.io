@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'a'>
+---
+
+<a
+  class="text-blue-700 visited:text-purple-700 hover:underline"
+  {...Astro.props}
+>
+  <slot />
+</a>

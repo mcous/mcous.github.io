@@ -1,0 +1,9 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'ul'>
+---
+
+<ul class="mt-4 list-disc pl-8" {...Astro.props}>
+  <slot />
+</ul>
