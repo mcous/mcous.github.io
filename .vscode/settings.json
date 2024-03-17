@@ -1,16 +1,30 @@
 {
   "cSpell.words": [
+    "alexa",
     "astro",
     "astrojs",
+    "automocking",
+    "bearimy",
     "fontsource",
+    "hvac",
     "iconify",
+    "ihop",
     "mcous",
+    "mechatronics",
+    "opentrons",
     "preact",
+    "preconfigured",
     "rehype",
     "résumé",
     "sonarjs",
+    "tada",
     "tailwindcss",
-    "unocss"
+    "typechecked",
+    "unocss",
+    "viam",
+    "viam’s",
+    "vite",
+    "vitest"
   ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.validate": ["astro"]

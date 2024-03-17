@@ -1,0 +1,11 @@
+repository: mcous/decoy
+rank: 4
+role: Creator
+skills:
+  - Python
+  - Pytest
+  - Unit testing
+description: |-
+  Mocking library that enforces best practices
+  to guide architecture and reduce coupling.
+  Used at Opentrons to test core logic.

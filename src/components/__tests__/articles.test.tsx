@@ -2,7 +2,7 @@ import { render, screen, within } from '@testing-library/preact'
 import { describe, expect, it } from 'vitest'
 
 import * as subject from '$components/articles.tsx'
-import type { ArticleEntry } from '$lib/article-entries.ts'
+import type { ArticleEntry } from '$lib/articles.ts'
 
 describe('articles component', () => {
   it('should have title', () => {

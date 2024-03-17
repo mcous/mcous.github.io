@@ -2,6 +2,8 @@ import { type CollectionEntry, getCollection } from 'astro:content'
 
 export type ArticleEntry = CollectionEntry<'articles'>
 
+export type ArticleData = ArticleEntry['data']
+
 export async function getArticles(): Promise<ArticleEntry[]> {
   const articles = await getCollection('articles')
 

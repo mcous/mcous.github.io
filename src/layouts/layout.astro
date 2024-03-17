@@ -3,18 +3,15 @@ import '@fontsource-variable/open-sans'
 
 import { ViewTransitions } from 'astro:transitions'
 
-import { Main } from '$components/main.tsx'
 import faviconIco from '$images/favicon.ico'
 import faviconSvg from '$images/favicon.svg'
 
 interface Props {
-  title?: string
-  description?: string
+  title: string
+  description: string
 }
 
-const SITE_TITLE = 'Michael Cousins'
-const SITE_DESCRIPTION = "Michael Cousins' personal website."
-const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props
+const { title, description } = Astro.props
 ---
 
 <!doctype html>
@@ -28,7 +25,5 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props
     <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
     <ViewTransitions />
   </head>
-  <Main urlPathname={Astro.url.pathname}>
-    <slot />
-  </Main>
+  <slot />
 </html>

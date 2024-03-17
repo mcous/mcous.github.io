@@ -1,8 +1,11 @@
 ---
 import { Article } from '$components/article-layout.tsx'
+import { Body } from '$components/body.tsx'
+import { Main } from '$components/main.tsx'
 import Layout from '$layouts/layout.astro'
 import * as components from '$layouts/markdown'
-import { type ArticleEntry, getArticles } from '$lib/article-entries.ts'
+import { type ArticleEntry, getArticles } from '$lib/articles.ts'
+import { getBio } from '$lib/bio.ts'
 
 export async function getStaticPaths() {
   const articles = await getArticles()
@@ -17,11 +20,15 @@ type Props = ArticleEntry
 
 const article = Astro.props
 const { title, description } = article.data
-const { Content } = await article.render()
+const [{ Content }, bio] = await Promise.all([article.render(), getBio()])
 ---
 
 <Layout title={title} description={description}>
-  <Article data={article.data}>
-    <Content components={components} />
-  </Article>
+  <Body>
+    <Main bio={bio.data}>
+      <Article article={article.data}>
+        <Content components={components} />
+      </Article>
+    </Main>
+  </Body>
 </Layout>

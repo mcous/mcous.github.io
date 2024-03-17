@@ -1,0 +1,28 @@
+name: Viam
+description: Platform for building and managing smart machines
+url: https://viam.com
+
+roles:
+  - title: Software Engineer IV
+    start: 2023-03
+  - title: Software Engineer V
+    start: 2024-02
+
+achievements:
+  - >-
+    Led a multi-team, multi-project effort to quickly and safely move Viam’s
+    main web app from a brittle proof-of-concept to a resilient, growth-ready
+    multi-page SvelteKit app with well-defined testing and architectural
+    strategies
+  - >-
+    Completed Viam's switch to Playwright for E2E testing by writing our CI
+    workflows and establishing best-practices through written documentation and
+    PR reviews
+  - >-
+    Worked closely with PMs and designers to establish lightweight milestone,
+    ticket acceptance criteria, and stakeholder review processes to increase
+    project velocity
+  - >-
+    Skilled up software engineers of varying levels of experience on unit
+    testing, end-to-end testing, continuous integration, and architectural
+    best-practices
