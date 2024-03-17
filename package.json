@@ -10,12 +10,13 @@
   "author": "Michael Cousins <michael@cousins.io> (https://michael.cousins.io)",
   "type": "module",
   "scripts": {
-    "all": "astro sync && concurrently -g pnpm:lint pnpm:check pnpm:coverage pnpm:build",
+    "all": "astro sync && pnpm run lint && pnpm run check && pnpm run coverage && pnpm run build",
     "build": "astro build",
     "check": "astro check",
     "coverage": "vitest run --coverage",
     "format": "prettier --write . && eslint --fix .",
     "lint": "prettier --check . && eslint .",
+    "prepare": "playwright install chromium",
     "preview": "astro build && astro preview",
     "start": "astro dev",
     "test": "vitest"
@@ -23,6 +24,10 @@
   "eslintConfig": {
     "parserOptions": {
       "project": "./tsconfig.json"
+    },
+    "env": {
+      "browser": true,
+      "node": true
     },
     "extends": [
       "@mcous/eslint-config",
@@ -40,6 +45,8 @@
           "varsIgnorePattern": "^_"
         }
       ],
+      "promise/always-return": "off",
+      "promise/no-callback-in-promise": "off",
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error"
     },
@@ -95,7 +102,6 @@
     "@unocss/eslint-config": "^0.58.5",
     "@unocss/preset-icons": "^0.58.5",
     "@vitest/coverage-istanbul": "^1.3.1",
-    "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "^0.31.4",
@@ -108,6 +114,7 @@
     "eslint-plugin-unicorn": "^51.0.1",
     "eslint-plugin-vitest": "^0.3.22",
     "jsdom": "^24.0.0",
+    "playwright": "^1.42.1",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "remark-emoji": "^4.0.1",

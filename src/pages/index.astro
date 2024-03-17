@@ -1,11 +1,21 @@
 ---
 import { ArticleList } from '$components/articles.tsx'
+import { Body } from '$components/body.tsx'
+import { Main } from '$components/main.tsx'
 import Layout from '$layouts/layout.astro'
-import { getArticles } from '$lib/article-entries.ts'
+import { getArticles } from '$lib/articles.ts'
+import { getBio } from '$lib/bio.ts'
 
-const articleEntries = await getArticles()
+const TITLE = 'Michael Cousins'
+const DESCRIPTION = "Michael Cousins' personal website."
+
+const [articleEntries, bio] = await Promise.all([getArticles(), getBio()])
 ---
 
-<Layout>
-  <ArticleList entries={articleEntries} />
+<Layout title={TITLE} description={DESCRIPTION}>
+  <Body>
+    <Main bio={bio.data} isHome={true}>
+      <ArticleList entries={articleEntries} />
+    </Main>
+  </Body>
 </Layout>

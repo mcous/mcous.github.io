@@ -1,0 +1,28 @@
+name: Opentrons
+description: Open-source liquid handling robots for biologists
+url: https://opentrons.com
+
+roles:
+  - title: Frontend Software Engineer
+    start: 2017-08
+  - title: Software Engineer III
+    start: 2018-03
+  - title: Software Engineer IV
+    start: 2019-03
+    end: 2023-03
+
+achievements:
+  - >-
+    Led the Robot Services team as we designed, built, and shipped a
+    reliability-focused rewrite of the OT-2 and Flex robots' control and
+    workflow execution software, while keeping users' already functioning
+    workflows intact
+  - >-
+    Worked with my teams' embedded designers and product managers to deliver
+    features and resolve our trickiest bugs
+  - >-
+    Architected, developed, and maintained the Opentrons App, the Electron and
+    React desktop app that controls the OT-2 and Flex robots
+  - >-
+    Configured and maintained CI and deployment systems for multiple products
+    across multiple languages, operating systems, and CI providers

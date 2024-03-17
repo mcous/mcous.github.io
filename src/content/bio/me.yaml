@@ -1,0 +1,22 @@
+firstName: Michael
+lastName: Cousins
+blurb: /[a-z]+ware engineer/
+location: Brooklyn, NY
+email: michael@cousins.io
+github: mcous
+linkedIn: mcous
+
+caveats:
+  - warranty void if coffee is removed
+
+description: >-
+  Detail-oriented full-stack software engineer with over 10 years of experience.
+  Passionate about shipping high-quality products, leading teams to solve
+  complex problems thoughtfully, and improving my craft and the craft of those
+  around me.
+
+education:
+  degree: B.Sc. in Mechanical Engineering
+  school: Northwestern University
+  year: '2012'
+  details: Conc. in intelligent mechanical systems

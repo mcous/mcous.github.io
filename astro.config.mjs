@@ -5,6 +5,8 @@ import { defineConfig } from 'astro/config'
 import remarkEmoji from 'remark-emoji'
 import unoCss from 'unocss/astro'
 
+import { resumePDF } from './etc/resume-pdf'
+
 export default defineConfig({
   site: 'https://michael.cousins.io',
   integrations: [
@@ -12,5 +14,6 @@ export default defineConfig({
     sitemap(),
     unoCss({ injectReset: true }),
     preact(),
+    resumePDF(),
   ],
 })

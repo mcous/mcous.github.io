@@ -1,4 +1,4 @@
-import type { ArticleEntry } from '$lib/article-entries.ts'
+import type { ArticleEntry } from '$lib/articles.ts'
 
 export interface ArticleListProps {
   entries: ArticleEntry[]
