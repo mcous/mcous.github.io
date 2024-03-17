@@ -6,6 +6,6 @@ skills:
   - React
   - Vite
 description: |-
-  Printed circuit board viewer app and libraries.
+  Printed circuit board viewer and libraries.
   Renders fabrication (Gerber) files as SVG.
   Used by various PCB manufacturers.

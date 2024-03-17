@@ -6,5 +6,5 @@ skills:
   - GitHub Actions
 description: |-
   Deploys packages to npm from CI.
-  Took over as maintainer from original author.
+  Took over as maintainer from author.
   Used at Viam and by thousands of projects.
