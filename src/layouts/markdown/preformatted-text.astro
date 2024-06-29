@@ -8,3 +8,10 @@ const className = `mt-4 text-xs sm:text-sm w-screen max-w-xl self-center px-4 py
 ---
 
 <pre class={className} {...props}><slot /></pre>
+
+<style>
+  pre > :global(code) {
+    padding: 0;
+    background-color: inherit;
+  }
+</style>
