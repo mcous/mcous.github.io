@@ -16,7 +16,7 @@ export const Main: FunctionComponent<MainProps> = ({
 }) => (
   <>
     <Header bio={bio} isHome={isHome} />
-    <main class="mx-auto max-w-xl flex flex-col items-center px-4">
+    <main class="mx-auto mb-4 max-w-xl flex flex-col items-center px-4">
       {children}
     </main>
   </>

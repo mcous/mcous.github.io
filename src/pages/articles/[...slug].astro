@@ -2,6 +2,7 @@
 import { Article } from '$components/article-layout.tsx'
 import { Body } from '$components/body.tsx'
 import { Main } from '$components/main.tsx'
+import Comments from '$layouts/comments.astro'
 import Layout from '$layouts/layout.astro'
 import * as components from '$layouts/markdown'
 import { type ArticleEntry, getArticles } from '$lib/articles.ts'
@@ -29,6 +30,7 @@ const [{ Content }, bio] = await Promise.all([article.render(), getBio()])
       <Article article={article.data}>
         <Content components={components} />
       </Article>
+      <Comments />
     </Main>
   </Body>
 </Layout>
