@@ -60,9 +60,17 @@ const projects = defineCollection({
     repository: z.string().regex(/^[a-z0-9_-]+\/[a-z0-9_-]+/iu),
     description: z.string(),
     role: z.string(),
+    rank: z.number(),
+  }),
+})
+
+const skills = defineCollection({
+  type: 'data',
+  schema: z.object({
+    name: z.string(),
     skills: z.array(z.string()),
     rank: z.number(),
   }),
 })
 
-export const collections = { articles, bio, jobs, projects }
+export const collections = { articles, bio, jobs, projects, skills }

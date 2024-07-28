@@ -1,0 +1,6 @@
+name: Testing
+rank: 1
+skills:
+  - Test-driven development
+  - UI component testing (Testing Library)
+  - Automated end-to-end testing (Playwright)

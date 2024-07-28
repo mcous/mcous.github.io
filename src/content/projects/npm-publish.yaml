@@ -1,10 +1,6 @@
 repository: JS-DevTools/npm-publish
 rank: 1
-role: Maintainer
-skills:
-  - TypeScript
-  - GitHub Actions
+role: Sole maintainer
 description: |-
-  Deploys packages to npm from CI.
-  Took over as maintainer from author.
-  Used at Viam and by thousands of projects.
+  Automatically publishes libraries to npm
+  for Viam and thousands of other users.

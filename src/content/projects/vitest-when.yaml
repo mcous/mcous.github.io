@@ -1,11 +1,6 @@
 repository: mcous/vitest-when
-rank: 3
+rank: 2
 role: Creator
-skills:
-  - TypeScript
-  - Vitest
-  - Unit testing
 description: |-
-  Stubbing library for Vitest to make mocking
-  more expressive and less error-prone.
-  Used at Viam and Opentrons for UI testing.
+  Isolates Viam's & Opentrons' UI logic in tests
+  with easy conditional stubbing for Vitest.

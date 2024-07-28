@@ -5,20 +5,28 @@ import Layout from '$layouts/layout.astro'
 import { getBio } from '$lib/bio.ts'
 import { getJobs } from '$lib/jobs.ts'
 import { getProjects } from '$lib/projects.ts'
+import { getSkills } from '$lib/skills.ts'
 
 const TITLE = "Michael Cousins' Résumé"
 const DESCRIPTION = "A selection of Michael Cousins' accomplishments and skills"
 
 const site = Astro.site
-const [bio, jobs, projects] = await Promise.all([
+const [bio, jobs, projects, skills] = await Promise.all([
   getBio(),
   getJobs(),
   getProjects(),
+  getSkills(),
 ])
 ---
 
 <Layout title={TITLE} description={DESCRIPTION}>
   <Body class="bg-gray-800">
-    <ResumePage bio={bio.data} jobs={jobs} projects={projects} site={site} />
+    <ResumePage
+      bio={bio.data}
+      jobs={jobs}
+      projects={projects}
+      skills={skills}
+      site={site}
+    />
   </Body>
 </Layout>

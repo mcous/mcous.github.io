@@ -3,12 +3,14 @@ import { type FunctionComponent, toChildArray } from 'preact'
 import type { BioData } from '$lib/bio.ts'
 import type { JobEntry, JobRole, JobRoles } from '$lib/jobs.ts'
 import type { ProjectEntry } from '$lib/projects.ts'
+import type { SkillsEntry } from '$lib/skills.ts'
 
 export interface ResumeProps {
   site: URL | undefined
   bio: BioData
   jobs: JobEntry[]
   projects: ProjectEntry[]
+  skills: SkillsEntry[]
 }
 
 export const Resume: FunctionComponent<ResumeProps> = ({
@@ -16,24 +18,26 @@ export const Resume: FunctionComponent<ResumeProps> = ({
   bio,
   jobs,
   projects,
+  skills,
 }) => (
   <>
-    <nav class="mx-auto max-w-[8.5in] flex flex-row justify-between text-sm print:hidden">
+    <nav class="mx-auto max-w-[8.5in] flex flex-row justify-between px-8 text-sm print:hidden md:px-10">
       <a href="/" class="py-4 text-white hover:underline">
         Back
       </a>
       <a
         href="/michael-cousins.pdf"
-        class="py-4 text-white hover:underline"
+        class="flex items-center gap-1 py-4 text-white hover:underline"
         data-astro-prefetch="false"
         data-astro-reload
       >
-        Download PDF
+        Download
+        <span aria-label="pdf" role="img" class="i-octicon-file-pdf" />
       </a>
     </nav>
-    <main class="mx-auto h-[11in] w-[8.5in] flex bg-white px-10 py-6 text-xs leading-normal">
-      <div class="mr-8 h-full w-2/3 flex-shrink-0 border-r-1 border-dark-700 pr-8">
-        <section class="mb-5 flex flex-col gap-2 border-b-1 border-dark-700 pb-5">
+    <main class="mx-auto h-full flex flex-col bg-white px-8 py-6 text-xs leading-normal shadow-sm md:mb-8 md:h-[11in] md:max-w-[8.5in] md:flex-row md:px-10">
+      <div class="mb-8 h-full w-full flex-shrink-0 border-b-1 border-dark-700 pb-8 md:mb-0 md:mr-8 md:w-2/3 md:border-b-0 md:border-r-1 md:pb-0 md:pr-8">
+        <section class="mb-8 flex flex-col gap-2 border-b-1 border-dark-700 pb-8 md:mb-4 md:pb-4">
           <h1 class="text-2xl">
             {bio.firstName} {bio.lastName}
           </h1>
@@ -55,15 +59,15 @@ export const Resume: FunctionComponent<ResumeProps> = ({
               github.com/{bio.github}
             </a>
           </HorizontalList>
-          <p>{bio.description}</p>
+          <p class="md:whitespace-pre-line">{bio.description}</p>
         </section>
         <section class="flex flex-col gap-4">
           <h2 class="text-xl -mb-2">Work Experience</h2>
           {jobs.map(
             ({ id, data: { name, description, url, roles, achievements } }) => (
               <div key={id} class="flex flex-col gap-2">
-                <div class="flex items-baseline justify-between">
-                  <h3 class="text-lg -mb-1">
+                <div class="flex flex-col md:flex-row md:items-baseline md:justify-between">
+                  <h3 class="mb-1 text-lg md:-mb-1">
                     {url ? (
                       <a href={url.href} class="hover:underline">
                         {name}
@@ -73,8 +77,8 @@ export const Resume: FunctionComponent<ResumeProps> = ({
                     )}
                   </h3>
                   <HorizontalList>
-                    {description}
                     {formatDuration(roles)}
+                    {description}
                   </HorizontalList>
                 </div>
                 <ul class="flex flex-col-reverse gap-0.5 text-2xs leading-normal">
@@ -94,61 +98,43 @@ export const Resume: FunctionComponent<ResumeProps> = ({
           )}
         </section>
       </div>
-      <div class="w-1/3">
-        <section class="mb-5 flex flex-col gap-2 border-b-1 border-dark-700 pb-5">
-          <h2 class="mt-1 text-lg">Open-Source Projects</h2>
-          {projects.map(
-            ({ id, data: { repository, role, skills, description } }) => (
-              <div key={id} class="flex flex-col gap-1">
-                <h3 class="text-xs">
-                  <a
-                    href={`https://github.com/${repository}`}
-                    class="text-blue-700 hover:underline"
-                  >
-                    {repository}
-                  </a>
-                </h3>
-                <div class="flex items-baseline justify-between text-2xs leading-snug">
-                  {role}
-                  <HorizontalList>{skills}</HorizontalList>
-                </div>
-                <p class="whitespace-pre-line text-2xs leading-normal">
-                  {description}
-                </p>
+      <div class="w-full md:w-1/3 md:pt-1">
+        <section class="mb-8 flex flex-col gap-2 border-b-1 border-dark-700 pb-8 md:mb-4 md:pb-4">
+          <h2 class="text-lg">Open-Source Projects</h2>
+          {projects.map(({ id, data: { repository, role, description } }) => (
+            <div key={id} class="flex flex-col gap-1">
+              <h3 class="md:text-xs">
+                <a
+                  href={`https://github.com/${repository}`}
+                  class="text-blue-700 hover:underline"
+                >
+                  {repository}
+                </a>
+              </h3>
+              <div class="flex items-baseline justify-between text-xs leading-snug md:text-2xs">
+                {role}
               </div>
-            ),
-          )}
+              <p class="leading-normal md:whitespace-pre-line md:text-2xs">
+                {description}
+              </p>
+            </div>
+          ))}
         </section>
-        <section class="mb-5 flex flex-col gap-2 border-b-1 border-dark-700 pb-5">
-          <h2 class="text-lg">Ask Me About</h2>
-          <TitledList title="Languages">
-            <span>TypeScript and JavaScript</span>
-            <span>Python</span>
-          </TitledList>
-          <TitledList title="Testing">
-            <span>Test-driven development</span>
-            <span>Automated end-to-end testing</span>
-          </TitledList>
-          <TitledList title="Frontend">
-            <span>Scalable, testable application architecture</span>
-            <span>Component-based view libraries</span>
-          </TitledList>
-          <TitledList title="Backend">
-            <span>HTTP API design</span>
-            <span>Event-driven architecture</span>
-          </TitledList>
-          <TitledList title="Glue">
-            <span>Technical leadership and mentorship</span>
-            <span>Project management</span>
-          </TitledList>
+        <section class="mb-8 flex flex-col gap-2 border-b-1 border-dark-700 pb-8 md:mb-4 md:pb-4">
+          <h2 class="text-lg">Skills</h2>
+          {skills.map(({ id, data: { name, skills } }) => (
+            <TitledList key={id} title={name}>
+              {skills}
+            </TitledList>
+          ))}
         </section>
         <section class="flex flex-col gap-2">
           <h2 class="text-lg">Education</h2>
           <TitledList title={bio.education.degree}>
-            <span>{bio.education.details}</span>
             <span>
               {bio.education.school}, class of {bio.education.year}
             </span>
+            <span>{bio.education.details}</span>
           </TitledList>
         </section>
       </div>
@@ -160,9 +146,14 @@ const HorizontalList: FunctionComponent<{ class?: string }> = ({
   class: className = '',
   children,
 }) => (
-  <ul class={`flex flex-row items-baseline ${className}`}>
+  <ul
+    class={`flex flex-wrap gap-x-3 gap-y-1 md:gap-0 items-baseline ${className}`}
+  >
     {toChildArray(children).map((child, index) => (
-      <li class={index > 0 ? 'before:px-[0.25em] before:content-["|"]' : ''}>
+      <li
+        key={index}
+        class={index > 0 ? 'md:before:px-[0.25em] md:before:content-["|"]' : ''}
+      >
         {child}
       </li>
     ))}
@@ -175,7 +166,11 @@ const TitledList: FunctionComponent<{ title: string }> = ({
 }) => (
   <div class="flex flex-col gap-1">
     <h3 class="text-sm">{title}</h3>
-    <ul class="flex flex-col gap-0.5 text-2xs leading-normal">{children}</ul>
+    <ul class="flex flex-col list-circle gap-0.5 text-xs leading-normal md:text-2xs">
+      {toChildArray(children).map((child, index) => (
+        <li key={index}>{child}</li>
+      ))}
+    </ul>
   </div>
 )
 

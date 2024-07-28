@@ -28,7 +28,7 @@ export const resumePDF = () => {
               response.setHeader('Content-Type', 'application/pdf')
               response.end(contents)
             })
-            .catch((error) => next(error))
+            .catch((/** @type unknown */ error) => next(error))
         })
       },
       'astro:build:done': async ({ dir }) => {

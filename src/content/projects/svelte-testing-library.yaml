@@ -1,11 +1,6 @@
 repository: testing-library/svelte-testing-library
-rank: 5
-role: Contributor
-skills:
-  - JavaScript
-  - Svelte
-  - UI testing
+rank: 0
+role: Sole maintainer
 description: |-
-  De-facto standard Svelte testing utilities.
-  Fixed bugs, improved CI, updated docs,
-  triaged issues, and prepared for Svelte 5.
+  Renders and tests Svelte components
+  for Viam and thousands of other users.

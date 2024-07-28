@@ -5,24 +5,24 @@ url: https://opentrons.com
 roles:
   - title: Frontend Software Engineer
     start: 2017-08
-  - title: Software Engineer III
+  - title: Software Engineer 3 (Mid-level)
     start: 2018-03
-  - title: Software Engineer IV
+  - title: Software Engineer 4 (Senior)
     start: 2019-03
     end: 2023-03
 
 achievements:
   - >-
-    Led the Robot Services team as we designed, built, and shipped a
-    reliability-focused rewrite of the OT-2 and Flex robots' control and
-    workflow execution software, while keeping users' already functioning
-    workflows intact
-  - >-
-    Worked with my teams' embedded designers and product managers to deliver
-    features and resolve our trickiest bugs
+    Designed, built, and shipped a reliability-focused rewrite of the OT-2 and
+    Flex robots' control and workflow execution software, unblocking complex
+    multi-system integrations while keeping users' already functioning workflows
+    intact
   - >-
     Architected, developed, and maintained the Opentrons App, the Electron and
     React desktop app that controls the OT-2 and Flex robots
+  - >-
+    Prioritized work with my teams' embedded designers and product managers,
+    shipping fixes and features to reduce customer support requests by 30%
   - >-
     Configured and maintained CI and deployment systems for multiple products
     across multiple languages, operating systems, and CI providers

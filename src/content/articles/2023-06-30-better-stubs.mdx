@@ -100,8 +100,8 @@ when(sayHello).calledWith('Bob').thenReturn('Hello, Bob')
 when(sayHello).calledWith('Chad').thenThrow(new Error('Nah'))
 ```
 
-The `calledWith` method accepts Vitest's [asymmetric matchers][], so you can
-focus on specifying what's important without losing out on test completeness.
+The `calledWith` method accepts Vitest's [asymmetric matchers][], so you can focus
+on specifying what's important without losing out on test completeness.
 
 ```ts
 when(sayHello).calledWith(expect.any(String)).thenReturn('Hello!')

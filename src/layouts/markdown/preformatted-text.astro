@@ -3,8 +3,8 @@ import type { HTMLAttributes } from 'astro/types'
 
 type Props = HTMLAttributes<'pre'>
 
-const { class: baseClassName = '', tabindex: _, ...props } = Astro.props
-const className = `mt-4 text-xs sm:text-sm w-screen max-w-xl self-center px-4 py-2 sm:rounded ${baseClassName}`
+const { class: baseClassName, tabindex: _, ...props } = Astro.props
+const className = `mt-4 text-xs sm:text-sm w-screen max-w-xl self-center px-4 py-2 sm:rounded ${baseClassName ?? ''}`
 ---
 
 <pre class={className} {...props}><slot /></pre>

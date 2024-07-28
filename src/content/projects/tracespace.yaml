@@ -1,11 +1,6 @@
 repository: tracespace/tracespace
-rank: 2
+rank: 4
 role: Creator
-skills:
-  - TypeScript
-  - React
-  - Vite
 description: |-
-  Printed circuit board viewer and libraries.
-  Renders fabrication (Gerber) files as SVG.
-  Used by various PCB manufacturers.
+  Renders fabrication (Gerber) files as SVG
+  on various PCB manufacturers' websites.

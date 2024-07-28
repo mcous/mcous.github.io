@@ -5,14 +5,14 @@ url: https://keenhome.io
 roles:
   - title: Mechatronics Engineer
     start: 2014-11
-  - title: Senior Product Engineer
+  - title: Product Engineer
     start: 2015-07
     end: 2017-07
 
 achievements:
   - >-
-    Rebuilt the Keen Home API's authentication and authorization systems, adding
-    an OAuth frontend and backend for Amazon Alexa integration
+    Rebuilt the Keen Home API's auth systems - written in Scala - allowing users
+    to integrate their Smart Vents with Ecobee thermostats and Amazon Alexa
   - >-
     Designed and implemented hardware and software for assembly-line QC fixtures
   - >-
