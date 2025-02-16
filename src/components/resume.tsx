@@ -1,3 +1,4 @@
+import { clsx } from 'clsx'
 import { type FunctionComponent, toChildArray } from 'preact'
 
 import type { BioData } from '$lib/bio.ts'
@@ -62,12 +63,12 @@ export const Resume: FunctionComponent<ResumeProps> = ({
           <p class="md:whitespace-pre-line">{bio.description}</p>
         </section>
         <section class="flex flex-col gap-4">
-          <h2 class="text-xl -mb-2">Work Experience</h2>
+          <h2 class="text-lg -mb-2">Work Experience</h2>
           {jobs.map(
             ({ id, data: { name, description, url, roles, achievements } }) => (
               <div key={id} class="flex flex-col gap-2">
                 <div class="flex flex-col md:flex-row md:items-baseline md:justify-between">
-                  <h3 class="mb-1 text-lg md:-mb-1">
+                  <h3 class="mb-1 text-base md:-mb-1">
                     {url ? (
                       <a href={url.href} class="hover:underline">
                         {name}
@@ -81,11 +82,7 @@ export const Resume: FunctionComponent<ResumeProps> = ({
                     {description}
                   </HorizontalList>
                 </div>
-                <ul class="flex flex-col-reverse gap-0.5 text-2xs leading-normal">
-                  {roles.map((role, index) => (
-                    <li key={index}>{formatRole(role, index, roles)}</li>
-                  ))}
-                </ul>
+                <RoleList roles={roles} />
                 <ul class="flex flex-col list-circle gap-1">
                   {achievements.map((achievement, index) => (
                     <li key={index}>
@@ -101,7 +98,7 @@ export const Resume: FunctionComponent<ResumeProps> = ({
       <div class="w-full md:w-1/3 md:pt-1">
         <section class="mb-8 flex flex-col gap-2 border-b-1 border-dark-700 pb-8 md:mb-4 md:pb-4">
           <h2 class="text-lg">Open-Source Projects</h2>
-          {projects.map(({ id, data: { repository, role, description } }) => (
+          {projects.map(({ id, data: { repository, roles, description } }) => (
             <div key={id} class="flex flex-col gap-1">
               <h3 class="md:text-xs">
                 <a
@@ -111,9 +108,7 @@ export const Resume: FunctionComponent<ResumeProps> = ({
                   {repository}
                 </a>
               </h3>
-              <div class="flex items-baseline justify-between text-xs leading-snug md:text-2xs">
-                {role}
-              </div>
+              <RoleList roles={roles} />
               <p class="leading-normal md:whitespace-pre-line md:text-2xs">
                 {description}
               </p>
@@ -143,16 +138,21 @@ export const Resume: FunctionComponent<ResumeProps> = ({
 )
 
 const HorizontalList: FunctionComponent<{ class?: string }> = ({
-  class: className = '',
+  class: className,
   children,
 }) => (
   <ul
-    class={`flex flex-wrap gap-x-3 gap-y-1 md:gap-0 items-baseline ${className}`}
+    class={clsx(
+      'flex flex-wrap gap-x-3 gap-y-1 md:gap-0 items-baseline',
+      className,
+    )}
   >
     {toChildArray(children).map((child, index) => (
       <li
         key={index}
-        class={index > 0 ? 'md:before:px-[0.25em] md:before:content-["|"]' : ''}
+        class={clsx(
+          index > 0 && 'md:before:px-[0.25em] md:before:content-["|"]',
+        )}
       >
         {child}
       </li>
@@ -174,18 +174,37 @@ const TitledList: FunctionComponent<{ title: string }> = ({
   </div>
 )
 
+const RoleList: FunctionComponent<{ roles: JobRoles }> = ({ roles }) => (
+  <ul class="w-fit table text-2xs leading-normal">
+    {roles.toReversed().map((role, index) => (
+      <li key={index} class="table-row">
+        <span class={clsx('table-cell', index > 0 && 'pt-0.5')}>
+          {role.title}
+        </span>
+        <span class={clsx('table-cell pl-4', index > 0 && 'pt-0.5')}>
+          {formatRoleDates(role, index, roles)}
+        </span>
+      </li>
+    ))}
+  </ul>
+)
+
 const monthFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'short',
   year: 'numeric',
   timeZone: 'UTC',
 })
 
-const formatRole = (role: JobRole, index: number, roles: JobRoles): string => {
-  const { title, start, end = roles[index + 1]?.start } = role
+const formatRoleDates = (
+  role: JobRole,
+  reversedIndex: number,
+  roles: JobRoles,
+): string => {
+  const { start, end = roles[roles.length - reversedIndex]?.start } = role
   const startText = monthFormatter.format(start)
   const endText = end ? monthFormatter.format(end) : 'present'
 
-  return `${title} — ${startText} to ${endText}`
+  return `${startText} to ${endText}`
 }
 
 const formatDuration = (roles: JobRoles): string => {

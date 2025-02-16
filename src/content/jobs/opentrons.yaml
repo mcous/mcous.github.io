@@ -13,16 +13,13 @@ roles:
 
 achievements:
   - >-
-    Designed, built, and shipped a reliability-focused rewrite of the OT-2 and
-    Flex robots' control and workflow execution software, unblocking complex
-    multi-system integrations while keeping users' already functioning workflows
-    intact
+    Designed, built, and shipped an HTTP API for Opentrons’ on-device control
+    server, fixing long-standing operator-safety bugs, unblocking complex
+    multi-system integrations, and keeping users’ existing workflows entirely
+    intact.
   - >-
-    Architected, developed, and maintained the Opentrons App, the Electron and
-    React desktop app that controls the OT-2 and Flex robots
+    Architected, developed, and maintained the Opentrons App, the Electron,
+    React, and Redux desktop app that controls the OT-2 and Flex robots.
   - >-
-    Prioritized work with my teams' embedded designers and product managers,
-    shipping fixes and features to reduce customer support requests by 30%
-  - >-
-    Configured and maintained CI and deployment systems for multiple products
-    across multiple languages, operating systems, and CI providers
+    Led the Core Platform Experience team as we resolved the OT-2’s most
+    pressing usability issues, cutting customer support requests by 30%.

@@ -1,6 +1,8 @@
 repository: tracespace/tracespace
 rank: 4
-role: Creator
+roles:
+  - title: Creator
+    start: 2014-05
 description: |-
   Renders fabrication (Gerber) files as SVG
-  on various PCB manufacturers' websites.
+  on various PCB manufacturers’ websites.

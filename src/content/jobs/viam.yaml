@@ -3,25 +3,32 @@ description: Platform for building and managing smart machines
 url: https://viam.com
 
 roles:
-  - title: Software Engineer 4 (Senior)
+  - title: Senior Engineer 1
     start: 2023-03
-  - title: Software Engineer 5 (Senior)
+  - title: Senior Engineer 2
     start: 2024-02
+  - title: Technical Lead
+    start: 2024-08
 
 achievements:
   - >-
-    Planned and shipped a rebuild of Viam's machine configuration UI, leading a
-    team of nine engineers to drastically improve the app's ease-of-use and
-    reliability
+    Led multiple projects to improve Viam’s “fragments” feature—a complex system
+    for sharing device configuration—across our Go and Svelte stack, delivering
+    valuable revision control and dependency management features to customers.
   - >-
-    Led a multi-team, multi-project effort to move Viam’s web app from a
-    brittle, untested proof-of-concept to a resilient, growth-ready SvelteKit
-    app, digging the app out of tech-debt bankruptcy and unblocking parallel
-    feature development
+    Architected Viam’s machine configuration builder UI, leading a team of nine
+    engineers to drastically improve the app’s ease-of-use, load times, and
+    reliability.
   - >-
-    Switched to Playwright for E2E tests by overhauling CI workflows, reducing
-    spurious flakiness and keeping CI fast while contributions increased
+    Transformed Viam’s web app into a resilient, SSG’d app using SvelteKit,
+    digging the app out of tech-debt bankruptcy, instituting pragmatic testing
+    standards, and unblocking parallel feature development across all front-end
+    teams.
   - >-
-    Skilled-up software engineers of varying levels of experience on unit
+    Overhauled CI workflows and switched to Playwright for E2E tests,
+    eliminating flaky CI failures and keeping CD to production fast while
+    contributions increased.
+  - >-
+    Mentored engineers of varying experience on unit testing, UI component
     testing, end-to-end testing, continuous integration, and architectural
-    best-practices
+    best-practices.

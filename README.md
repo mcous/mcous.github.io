@@ -1,6 +1,6 @@
 # michael.cousins.io
 
-Michael Cousins' home on the internet
+Michael Cousins’ home on the internet
 
 <https://michael.cousins.io>
 
