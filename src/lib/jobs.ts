@@ -13,7 +13,7 @@ export type JobAchievements = JobData['achievements']
 export async function getJobs(): Promise<JobEntry[]> {
   const jobs = await getCollection('jobs')
 
-  return jobs.sort(orderByStart)
+  return jobs.filter(({ data }) => !data.hidden).sort(orderByStart)
 }
 
 const orderByStart = (a: JobEntry, b: JobEntry): number => {

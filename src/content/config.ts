@@ -51,6 +51,7 @@ const jobs = defineCollection({
       )
       .nonempty(),
     achievements: z.array(z.string()),
+    hidden: z.boolean().optional(),
   }),
 })
 

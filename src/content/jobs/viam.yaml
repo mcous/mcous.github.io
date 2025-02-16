@@ -9,26 +9,19 @@ roles:
     start: 2024-02
   - title: Technical Lead
     start: 2024-08
+    end: 2025-05
 
 achievements:
   - >-
-    Led multiple projects to improve Viam’s “fragments” feature—a complex system
-    for sharing device configuration—across our Go and Svelte stack, delivering
-    valuable revision control and dependency management features to customers.
+    Launched a complete rebuild of Viam's fleet management UIs as tech lead of a
+    nine-person team, dramatically improving accessibility, reliability, and
+    load times.
   - >-
-    Architected Viam’s machine configuration builder UI, leading a team of nine
-    engineers to drastically improve the app’s ease-of-use, load times, and
-    reliability.
+    Drove the technical direction of Viam's front-end infrastructure and
+    tooling, using SvelteKit to add SSG and CDN caching to our app, while
+    creating shared code quality configurations for all six front-end teams.
   - >-
-    Transformed Viam’s web app into a resilient, SSG’d app using SvelteKit,
-    digging the app out of tech-debt bankruptcy, instituting pragmatic testing
-    standards, and unblocking parallel feature development across all front-end
-    teams.
-  - >-
-    Overhauled CI workflows and switched to Playwright for E2E tests,
-    eliminating flaky CI failures and keeping CD to production fast while
-    contributions increased.
-  - >-
-    Mentored engineers of varying experience on unit testing, UI component
-    testing, end-to-end testing, continuous integration, and architectural
-    best-practices.
+    Overhauled Viam's front-end testing with comprehensive yet pragmatic
+    standards, instituting E2E tests with Playwright and driving
+    accessibility-first component testing with Testing Library, cutting UI bug
+    reports by at least 50%.

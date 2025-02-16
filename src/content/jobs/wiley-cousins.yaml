@@ -1,5 +1,6 @@
 name: Wiley Cousins
 description: Contract software & hardware engineering
+hidden: true
 
 roles:
   - title: The “Cousins” half
