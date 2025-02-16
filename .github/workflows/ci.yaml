@@ -1,6 +1,10 @@
 name: 'CI'
 
-on: push
+on:
+  push:
+  schedule:
+    # once a month at the end of the month at ~8AM US eastern time
+    - cron: '0 13 28 * *'
 
 jobs:
   build:
