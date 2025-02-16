@@ -2,5 +2,5 @@ name: Front-end
 rank: 2
 skills:
   - Testable, scalable application architecture
-  - API data management
+  - API data management (TanStack Query)
   - Component-based UI (React, Svelte)

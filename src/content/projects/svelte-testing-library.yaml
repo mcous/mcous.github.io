@@ -1,6 +1,11 @@
 repository: testing-library/svelte-testing-library
 rank: 0
-role: Sole maintainer
+roles:
+  - title: Contributor
+    start: 2024-01
+  - title: Sole maintainer
+    start: 2024-04
+
 description: |-
   Renders and tests Svelte components
   for Viam and thousands of other users.

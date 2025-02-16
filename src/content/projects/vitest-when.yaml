@@ -1,6 +1,8 @@
 repository: mcous/vitest-when
 rank: 2
-role: Creator
+roles:
+  - title: Creator
+    start: 2023-05
 description: |-
-  Isolates Viam's & Opentrons' UI logic in tests
+  Isolates Viam’s & Opentrons’ UI logic in tests
   with easy conditional stubbing for Vitest.

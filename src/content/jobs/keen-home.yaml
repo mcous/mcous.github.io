@@ -11,9 +11,10 @@ roles:
 
 achievements:
   - >-
-    Rebuilt the Keen Home API's auth systems - written in Scala - allowing users
-    to integrate their Smart Vents with Ecobee thermostats and Amazon Alexa
+    Built an OAuth 2.0 login system with a React front-end and Scala back-end,
+    allowing users to connect their Smart Vents to Ecobee and Amazon Alexa.
   - >-
-    Designed and implemented hardware and software for assembly-line QC fixtures
+    Designed and implemented hardware and software for assembly-line QC
+    fixtures.
   - >-
-    Created and managed Node.js-based production systems, tools, and tests
+    Created and managed Node.js-based production systems, tools, and tests.

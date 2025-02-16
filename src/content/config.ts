@@ -59,7 +59,15 @@ const projects = defineCollection({
   schema: z.object({
     repository: z.string().regex(/^[a-z0-9_-]+\/[a-z0-9_-]+/iu),
     description: z.string(),
-    role: z.string(),
+    roles: z
+      .array(
+        z.object({
+          title: z.string(),
+          start: z.coerce.date(),
+          end: z.coerce.date().optional(),
+        }),
+      )
+      .nonempty(),
     rank: z.number(),
   }),
 })
