@@ -3,6 +3,7 @@ rank: 4
 roles:
   - title: Creator
     start: 2014-05
+    end: 2023-03
 description: |-
   React app that renders Gerber files as SVGs
   on various PCB manufacturers’ websites.

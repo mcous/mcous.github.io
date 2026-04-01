@@ -1,8 +1,8 @@
 repository: mcous/vitest-when
-rank: 2
+rank: 0
 roles:
   - title: Creator
     start: 2023-05
 description: |-
-  Isolates Viam’s & Opentrons’ UI logic in tests
-  with easy conditional stubbing for Vitest.
+  Adds easy conditional mocking to Vitest.
+  150,000 npm downloads per week.

@@ -4,5 +4,5 @@ roles:
   - title: Creator
     start: 2021-07
 description: |-
-  Isolates Opentrons’ core logic in tests
-  with easy conditional stubbing for Pytest.
+  Adds easy conditional mocking to Pytest.
+  Used at Opentrons to test core robot logic.
