@@ -1,5 +1,5 @@
 repository: testing-library/svelte-testing-library
-rank: 0
+rank: 1
 roles:
   - title: Contributor
     start: 2024-01
@@ -7,5 +7,5 @@ roles:
     start: 2024-04
 
 description: |-
-  Reliably renders and tests Svelte components
-  for Viam and thousands of other users.
+  Reliably tests Svelte components.
+  450,000 npm downloads per week.
