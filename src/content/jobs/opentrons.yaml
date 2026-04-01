@@ -3,7 +3,7 @@ description: Open-source liquid handling robots for biologists
 url: https://opentrons.com
 
 roles:
-  - title: Frontend Software Engineer
+  - title: Front-end Software Engineer
     start: 2017-08
   - title: Software Engineer 3 (Mid-level)
     start: 2018-03
@@ -13,13 +13,13 @@ roles:
 
 achievements:
   - >-
-    Designed, built, and shipped an HTTP API for Opentrons’ on-device control
-    server, fixing long-standing operator-safety bugs, unblocking complex
-    multi-system integrations, and keeping users’ existing workflows entirely
+    Developed the Opentrons App, implementing a scalable Electron, React, Redux,
+    and TanStack Query architecture to support controlling the OT-2 and Flex
+    robots.
+  - >-
+    Designed, built, and shipped an HTTP API for the on-device Python server,
+    enabling multi-system integrations while keeping users’ existing workflows
     intact.
   - >-
-    Architected, developed, and maintained the Opentrons App, the Electron,
-    React, and Redux desktop app that controls the OT-2 and Flex robots.
-  - >-
-    Led the Core Platform Experience team as we resolved the OT-2’s most
-    pressing usability issues, cutting customer support requests by 30%.
+    Resolved the OT-2’s most pressing connectivity issues between our React app
+    and embedded Linux devices, cutting customer support requests by 30%-50%.

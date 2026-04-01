@@ -4,5 +4,5 @@ roles:
   - title: Creator
     start: 2014-05
 description: |-
-  Renders fabrication (Gerber) files as SVG
+  React app that renders Gerber files as SVGs
   on various PCB manufacturers’ websites.

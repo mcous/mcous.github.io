@@ -95,7 +95,7 @@ export const Resume: FunctionComponent<ResumeProps> = ({
           )}
         </section>
       </div>
-      <div class="w-full md:w-1/3 md:pt-1">
+      <div class="w-full md:w-1/3 md:pt-0.5">
         <section class="mb-8 flex flex-col gap-2 border-b-1 border-dark-700 pb-8 md:mb-4 md:pb-4">
           <h2 class="text-lg">Open-Source Projects</h2>
           {projects.map(({ id, data: { repository, roles, description } }) => (
@@ -115,6 +115,7 @@ export const Resume: FunctionComponent<ResumeProps> = ({
             </div>
           ))}
         </section>
+
         <section class="mb-8 flex flex-col gap-2 border-b-1 border-dark-700 pb-8 md:mb-4 md:pb-4">
           <h2 class="text-lg">Skills</h2>
           {skills.map(({ id, data: { name, skills } }) => (
@@ -123,6 +124,7 @@ export const Resume: FunctionComponent<ResumeProps> = ({
             </TitledList>
           ))}
         </section>
+
         <section class="flex flex-col gap-2">
           <h2 class="text-lg">Education</h2>
           <TitledList title={bio.education.degree}>

@@ -1,5 +1,6 @@
 name: Back-end
-rank: 3
+rank: 1
 skills:
-  - HTTP API design
-  - Full-stack meta-frameworks (SvelteKit)
+  - HTTP APIs in Node.js, Python (NestJS, FastAPI)
+  - Full-stack frameworks (Next.js, SvelteKit)
+  - Durable workflow orchestration (Temporal)

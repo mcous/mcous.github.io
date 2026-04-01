@@ -1,6 +1,7 @@
 name: Testing
-rank: 1
+rank: 2
 skills:
   - Test-driven development
   - Accessibility-first UI testing (Testing Library)
   - Automated end-to-end testing (Playwright)
+  - CI/CD workflows (GitHub Actions)

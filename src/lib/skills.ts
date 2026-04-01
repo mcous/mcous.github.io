@@ -7,7 +7,7 @@ export type SkillsData = SkillsEntry['data']
 export async function getSkills(): Promise<SkillsEntry[]> {
   const skills = await getCollection('skills')
 
-  return skills.sort(orderByRank)
+  return skills.filter(({ data }) => data.rank >= 0).sort(orderByRank)
 }
 
 function orderByRank(a: SkillsEntry, b: SkillsEntry): number {
