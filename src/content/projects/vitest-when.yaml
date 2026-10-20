@@ -4,5 +4,6 @@ roles:
   - title: Creator
     start: 2023-05
 description: |-
-  Adds easy conditional mocking to Vitest.
-  150,000 npm downloads per week.
+  Conditional mocking for Vitest.
+  API adopted into Vitest core.
+  175,000 npm downloads per week.

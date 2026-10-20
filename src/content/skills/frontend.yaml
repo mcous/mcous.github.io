@@ -1,7 +1,10 @@
 name: Front-end
-rank: 0
+rank: 2
 skills:
-  - Testable, scalable state (Redux, signals)
-  - API data management (TanStack Query)
-  - Component-based UI (React, Svelte)
-  - Accessibility and inclusive design (WAI)
+  - React
+  - Next.js
+  - Redux
+  - Svelte
+  - SvelteKit
+  - Astro
+  - TanStack Query

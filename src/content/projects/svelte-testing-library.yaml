@@ -1,11 +1,9 @@
 repository: testing-library/svelte-testing-library
 rank: 1
 roles:
-  - title: Contributor
+  - title: Maintainer
     start: 2024-01
-  - title: Sole maintainer
-    start: 2024-04
 
 description: |-
-  Reliably tests Svelte components.
-  450,000 npm downloads per week.
+  Revived for Svelte 5 at Viam.
+  750,000 npm downloads per week.

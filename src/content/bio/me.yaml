@@ -1,7 +1,7 @@
 firstName: Michael
 lastName: Cousins
 blurb: /[a-z]+ware engineer/
-location: Brooklyn, NY
+location: NYC
 email: michael@cousins.io
 github: mcous
 linkedIn: mcous
@@ -10,9 +10,9 @@ caveats:
   - warranty void if coffee is removed
 
 description: |-
-  Experienced staff software engineer specializing in testing and architecture.
-  Passionate about building scalable web apps with React, Svelte, and Node.js.
-  Over 10 years empowering teams to deliver exceptional user experiences.
+  Staff product engineer and maintainer of open-source testing tools.
+  10+ years shipping full-stack TypeScript and Python, from lab robots to clinical AI.
+  Designs for testability and mentors teams in rigorous, confident engineering.
 
 education:
   degree: B.Sc. Mechanical Engineering
