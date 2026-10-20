@@ -3,16 +3,17 @@ description: Generative AI for clinical conversations
 url: https://www.abridge.com
 
 roles:
-  - title: Senior Full-stack Engineer
+  - title: Member of Technical Staff
     start: 2025-05
+    end: 2026-10
 
 achievements:
-  - Reduced launch latency of Abridge's web-app for nurses by 80% through smart
-    use of SSR in Next.js, client-side JS optimization, and a CDN for static
-    assets.
-  - Led end-to-end delivery of multiple ambiguous backend and full-stack
-    initiatives, shipping on time with no post-launch incidents and strong
-    observability.
-  - Spearheaded a company-wide migration to pnpm for improved security posture,
-    updating shared CI/CD workflows to gracefully swap several large
-    repositories.
+  - >-
+    Cut launch latency of Abridge's nursing web app by 80% with overdue
+    fundamentals: server rendering in Next.js, leaner client JS, and a CDN.
+  - >-
+    Owned generation and Temporal workflows for a new nursing note, tuning
+    prompts against clinician-grounded evals.
+  - >-
+    Paved the company's move to pnpm for supply-chain safety: migrated the first
+    service, added shared CI support, and wrote the guide other teams followed.

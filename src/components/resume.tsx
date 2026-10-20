@@ -110,13 +110,15 @@ export const Resume: FunctionComponent<ResumeProps> = ({
                     </p>
                     <RoleList roles={roles} />
                   </div>
-                  <ul class="flex flex-col list-circle gap-1">
-                    {achievements.map((achievement, index) => (
-                      <li key={index}>
-                        <p>{achievement}</p>
-                      </li>
-                    ))}
-                  </ul>
+                  {achievements.length > 0 && (
+                    <ul class="flex flex-col list-circle gap-1">
+                      {achievements.map((achievement, index) => (
+                        <li key={index}>
+                          <p>{achievement}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ),
             )}
@@ -244,13 +246,23 @@ const formatRoleDates = (
   const startText = monthFormatter.format(start)
   const endText = end ? monthFormatter.format(end) : 'present'
 
+  if (start > new Date()) {
+    return `Starting ${startText}`
+  }
+
   return `${startText} – ${endText}`
 }
 
+/** Format the total time across roles, or "New!" for under a quarter. */
 const formatDuration = (roles: JobRoles): string => {
   const start = roles[0].start
   const end = roles.at(-1)?.end
   const { years, quarters } = getDuration(start, end)
+
+  if (start > new Date() || (years === 0 && quarters === 0)) {
+    return 'New!'
+  }
+
   const formattedQuarters = ['', '¼', '½', '¾'][quarters] ?? ''
   const units = years === 1 && quarters === 0 ? 'year' : 'years'
 

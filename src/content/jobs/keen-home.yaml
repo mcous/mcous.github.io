@@ -3,17 +3,14 @@ description: Smart, connected HVAC products
 url: https://keenhome.io
 
 roles:
-  - title: Mechatronics Engineer
-    start: 2014-11
   - title: Product Engineer
-    start: 2015-07
+    start: 2014-11
     end: 2017-07
 
 achievements:
   - >-
-    Built an OAuth 2.0 login system with a React front-end and Scala back-end,
-    allowing users to connect their Smart Vents to Ecobee and Amazon Alexa.
+    Built OAuth login connecting Smart Vents to Ecobee and Alexa, in React and
+    Scala.
   - >-
-    Maintained distributed systems, deployed to AWS, for ingesting sensor data
-    over persistent, load-balanced TCP sockets from thousands of devices in
-    users’ homes.
+    Maintained AWS services ingesting sensor data over persistent, load-balanced
+    TCP sockets from thousands of devices in users' homes.

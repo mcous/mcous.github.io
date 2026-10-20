@@ -3,25 +3,24 @@ description: Platform for building and managing smart machines
 url: https://viam.com
 
 roles:
-  - title: Senior Engineer 1
+  - title: Senior Engineer
     start: 2023-03
-  - title: Senior Engineer 2
-    start: 2024-02
   - title: Technical Lead
     start: 2024-08
     end: 2025-05
 
 achievements:
   - >-
-    Launched a complete rebuild of Viam's fleet management UIs as tech lead of a
-    nine-person team, dramatically improving accessibility, reliability, and
-    load times.
+    Led a team of nine in rebuilding Viam's fragile fleet management UI into a
+    fast, linkable, accessible app where major regressions became rare.
   - >-
-    Drove the technical direction of Viam's front-end infrastructure and
-    tooling, using SvelteKit to add SSG and CDN caching to our app, while
-    creating shared code quality configurations for all six front-end teams.
+    Drove Go and Svelte work adding versioning and dependencies to fragments,
+    Viam's reusable robot-config building blocks.
   - >-
-    Overhauled Viam's front-end testing with comprehensive yet pragmatic
-    standards, instituting E2E tests with Playwright and driving
-    accessibility-first component testing with Testing Library, cutting UI bug
-    reports by at least 50%.
+    Set pragmatic unit, E2E, and static-analysis standards for all six front-end
+    teams via CI, shared configs, and code reviews, cutting UI bug reports by at
+    least 50%.
+  - >-
+    Split CI for the main monolith into isolated jobs, retried and loudly
+    flagged flaky tests, and kept deploys fast for dozens of engineers across
+    teams.
