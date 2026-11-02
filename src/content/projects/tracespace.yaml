@@ -5,5 +5,5 @@ roles:
     start: 2014-05
     end: 2023-03
 description: |-
-  React app that renders Gerber files as SVGs
-  on various PCB manufacturers’ websites.
+  Renders PCB Gerber files as SVGs.
+  Runs on PCB manufacturers' sites.

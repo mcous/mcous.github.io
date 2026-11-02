@@ -9,6 +9,7 @@ export default defineConfig({
     },
     fontFamily: {
       sans: ['Open Sans Variable', 'sans-serif'],
+      serif: ['Literata Variable', 'serif'],
       mono: ['Source Code Pro Variable', 'monospace'],
     },
     fontSize: {

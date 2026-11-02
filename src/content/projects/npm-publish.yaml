@@ -1,8 +1,8 @@
 repository: JS-DevTools/npm-publish
 rank: 2
 roles:
-  - title: Sole maintainer
+  - title: Maintainer
     start: 2023-04
 description: |-
-  Automates npm publishing in GitHub Actions.
-  Used by 20,000 open-source repositories.
+  Rescued from neglect for Viam.
+  Used by 20,000 repositories.

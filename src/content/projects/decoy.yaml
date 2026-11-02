@@ -4,5 +4,5 @@ roles:
   - title: Creator
     start: 2021-07
 description: |-
-  Adds easy conditional mocking to Pytest.
-  Used at Opentrons to test core robot logic.
+  Conditional mocking for pytest.
+  Used to test Opentrons robots.
